@@ -1,7 +1,7 @@
 # <h1 align="center">Hi, I'm Manson 👋</h1>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=36BCF7&center=true&vCenter=true&width=700&lines=Cybersecurity+Student;Linux+Enthusiast;Automation+%26+Scripting" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=24&pause=1000&color=00D9FF&center=true&vCenter=true&width=760&lines=Cybersecurity+Student;Linux+Enthusiast;Automation+%26+Scripting;Always+Learning+By+Building" alt="Typing SVG" />
 </p>
 
 <p align="center">
@@ -11,6 +11,7 @@
   <a href="https://github.com/Mansonware" target="_blank">
     <img src="https://img.shields.io/badge/GitHub-Mansonware-181717?style=for-the-badge&logo=github" alt="GitHub" />
   </a>
+  <img src="https://img.shields.io/badge/Status-Exploring%20the%20cyber%20world-00D9FF?style=for-the-badge" alt="Status" />
 </p>
 
 <p align="center">
@@ -22,19 +23,21 @@
 
 ---
 
-## 👨‍💻 About Me
+## 🌌 About Me
 
-I am currently building a strong foundation in technology, with a special focus on cybersecurity, Linux systems, networking, and automation. I enjoy understanding how systems work under the hood and improving my skills through hands-on practice and real-world simulations.
+I’m a technology enthusiast focused on building a strong foundation in cybersecurity, Linux systems, networking, and automation. I enjoy understanding how systems work at a deep level and improving my skills through hands-on practice, experimentation, and real-world problem solving.
 
 ---
 
-## 🎯 Current Focus
+## 🎯 What I’m Focused On
 
-- 🔐 Cybersecurity fundamentals
-- 🐧 Linux and command-line mastery
-- 🌐 Networking (TCP/IP, DNS, HTTP/HTTPS)
-- ⚙️ Automation with Bash and Python
-- 🧠 Problem-solving and system thinking
+<table align="center">
+  <tr>
+    <td align="center"><strong>🔐 Security</strong><br/>Cybersecurity fundamentals, ethical hacking mindset, and defensive thinking.</td>
+    <td align="center"><strong>🐧 Linux</strong><br/>Command-line mastery, systems understanding, and terminal fluency.</td>
+    <td align="center"><strong>⚙️ Automation</strong><br/>Bash, Python, and scripting to simplify repetitive work.</td>
+  </tr>
+</table>
 
 ---
 
@@ -49,8 +52,8 @@ I am currently building a strong foundation in technology, with a special focus 
 ## 📊 GitHub Analytics
 
 <p align="center">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Mansonware&show_icons=true&theme=tokyonight&hide_border=true" />
-  <img height="180em" src="https://github-readme-streak-stats.herokuapp.com/?user=Mansonware&theme=tokyonight&hide_border=true" />
+  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Mansonware&show_icons=true&theme=radical&hide_border=true" />
+  <img height="180em" src="https://github-readme-streak-stats.herokuapp.com/?user=Mansonware&theme=radical&hide_border=true" />
 </p>
 
 ---
@@ -67,13 +70,13 @@ I am currently building a strong foundation in technology, with a special focus 
 
 ## 🚀 Goals
 
-- Build real-world cybersecurity skills
+- Build strong real-world cybersecurity skills
 - Create automation and security projects
-- Develop a strong technical portfolio
+- Develop a compelling technical portfolio
 - Grow professionally in technology
 
 ---
 
 <p align="center">
-  <b>Always learning. Always improving.</b>
+  <b>Always learning. Always improving. ⚡</b>
 </p>
