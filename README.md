@@ -1,91 +1,180 @@
-# <h1 align="center">Olá, eu sou Manson 👋</h1>
+<!-- ╔══════════════════════════════════════════════════════════════════════╗ -->
+<!-- ║                    MANSONWARE // PROFILE TERMINAL                     ║ -->
+<!-- ╚══════════════════════════════════════════════════════════════════════╝ -->
 
-<p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&pause=1000&color=00D9FF&center=true&vCenter=true&width=820&lines=Estudante+de+Ciberseguran%C3%A7a;Entusiasta+de+Linux;Automa%C3%A7%C3%A3o+e+Scripting;Sempre+aprendendo+na+pr%C3%A1tica" alt="Typing SVG" />
-</p>
+<!-- ░░ HERO: header SVG animado (chuva Matrix + glitch) — feito à mão ░░ -->
+<div align="center">
 
-<p align="center">
-  <a href="https://mansonware-portfolio.vercel.app" target="_blank">
-    <img src="https://img.shields.io/badge/Portf%C3%B3lio-Visitar%20Site-7C3AED?style=for-the-badge&logo=vercel" alt="Portfólio" />
-  </a>
-  <a href="https://github.com/Mansonware" target="_blank">
-    <img src="https://img.shields.io/badge/GitHub-Mansonware-181717?style=for-the-badge&logo=github" alt="GitHub" />
-  </a>
-  <img src="https://img.shields.io/badge/Status-Explorando%20o%20mundo%20digital-00D9FF?style=for-the-badge" alt="Status" />
-</p>
+<img src="./assets/header.svg" width="100%" alt="MANSONWARE — Cybersecurity · Linux · Automation" />
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Foco-Ciberseguran%C3%A7a-FF4D6D?style=flat-square" />
-  <img src="https://img.shields.io/badge/Sistema-Linux-4F76A1?style=flat-square&logo=linux" />
-  <img src="https://img.shields.io/badge/Ferramentas-Bash%20%26%20Python-2E8B57?style=flat-square" />
-  <img src="https://img.shields.io/badge/Meta-Aprendizado%20cont%C3%ADnuo-FFD166?style=flat-square" />
-</p>
+</div>
 
----
+<div align="center">
 
-## 🚀 Quem sou eu
+<a href="https://mansonware-portfolio.vercel.app">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=900&color=00FF9C&center=true&vCenter=true&width=820&lines=%3E+initializing+breach...;%3E+bypassing+firewall...;%3E+access+granted+_;%3E+Estudante+de+Ciberseguran%C3%A7a;%3E+Quebrar+%E2%86%92+Entender+%E2%86%92+Reconstruir" alt="Typing SVG" />
+</a>
 
-Sou um entusiasta da tecnologia apaixonado por construir uma base sólida em cibersegurança, sistemas Linux, redes e automação. Gosto de entender como as coisas funcionam por dentro, aprender na prática e transformar conhecimento em soluções reais.
+</div>
 
-<pre align="center">
-$ whoami
-Manson
-$ focus
-Cybersecurity • Linux • Automation
-</pre>
+```ansi
+[1;32m┌──([1;36mvisitor㉿mansonware[1;32m)-[[0;37m~/profile[1;32m]
+[1;32m└─[1;36m$[0m ssh manson@core.system --connect
 
-> “A melhor forma de crescer na tecnologia é construir, testar, quebrar e aprender.”
+[0;90m[ * ] establishing secure shell ...........[1;32m OK[0m
+[0;90m[ * ] handshake / key exchange .............[1;32m OK[0m
+[0;90m[ * ] decrypting identity ..................[1;32m OK[0m
+[1;32m[ ✓ ] ACCESS GRANTED — welcome to the core.[0m
+```
 
----
+<!-- ─────────────────────────────  NEOFETCH CARD  ───────────────────────────── -->
 
-## 🔥 Áreas de interesse
+```ansi
+[1;32m       _,met$$$$$gg.[0m          [1;36mmanson[0m@[1;36mmansonware[0m
+[1;32m    ,g$$$$$$$$$$$$$$$P.[0m       [0;90m─────────────────────────────[0m
+[1;32m  ,g$$P""       """Y$$.".[0m     [1;32mOS[0m         : Linux (Arch btw)
+[1;32m ,$$P'              `$$$.[0m     [1;32mHost[0m       : Cybersecurity Student
+[1;32m',$$P       ,ggs.     `$$b:[0m    [1;32mShell[0m      : bash / zsh
+[1;32m`d$$'     ,$P"'   .    $$$[0m     [1;32mFocus[0m      : Security · Linux · Networking
+[1;32m $$P      d$'     ,    $$P[0m     [1;32mLang[0m       : Python · Bash · JS
+[1;32m $$:      $$.   -    ,d$$'[0m     [1;32mUptime[0m     : sempre aprendendo
+[1;32m $$;      Y$b._   _,d$P'[0m       [1;32mMindset[0m    : build · test · break · learn
+[1;32m Y$$.    `.`"Y$$$$P"'[0m         [1;32mEthics[0m     : white-hat only
+[1;32m `$$b      "-.__[0m              [0;37m███[1;32m███[0;90m███[1;36m███[0;37m███[0m
+[1;32m  `Y$$[0m
+[1;32m   `Y$$.[0m
+[1;32m     `$$b.[0m
+[1;32m       `Y$$b.[0m
+[1;32m          `"Y$b._[0m
+[1;32m              `"""[0m
+```
 
-<table align="center">
+<div align="center">
+
+<a href="https://mansonware-portfolio.vercel.app" target="_blank">
+  <img src="https://img.shields.io/badge/PORTF%C3%93LIO-ACCESS-00FF9C?style=for-the-badge&logo=vercel&logoColor=black&labelColor=0D1117" alt="Portfólio" />
+</a>
+<a href="https://github.com/Mansonware" target="_blank">
+  <img src="https://img.shields.io/badge/GITHUB-MANSONWARE-00FF9C?style=for-the-badge&logo=github&logoColor=00FF9C&labelColor=0D1117" alt="GitHub" />
+</a>
+<img src="https://komarev.com/ghpvc/?username=Mansonware&style=for-the-badge&color=00FF9C&label=INTRUSIONS&labelColor=0D1117" alt="views" />
+
+</div>
+
+<!-- ═════════════════════════════════════════════════════════════════════════ -->
+
+## `[ 01 ]` ./whoami
+
+> Entusiasta de tecnologia construindo uma base sólida em **cibersegurança**, **sistemas Linux**, **redes** e **automação**. Gosto de entender como as coisas funcionam por dentro, aprender na prática e transformar conhecimento em armas — digo, ferramentas. 😎
+
+```bash
+visitor@mansonware:~$ ./philosophy.sh
+> "Construir, testar, quebrar e aprender — nessa ordem, em loop."
+```
+
+<table>
   <tr>
-    <td align="center"><strong>🔐 Segurança</strong><br/>Fundamentos de cibersegurança, raciocínio defensivo e mindset ético.</td>
-    <td align="center"><strong>🐧 Linux</strong><br/>Linha de comando, ambientes Unix-like e entendimento profundo de sistemas.</td>
-    <td align="center"><strong>⚙️ Automação</strong><br/>Bash, Python e scripts para simplificar tarefas repetitivas.</td>
+    <td>🔐</td><td><b>Segurança</b> — fundamentos, raciocínio defensivo e mindset ético</td>
+    <td>🐧</td><td><b>Linux</b> — CLI, ambientes Unix-like e internals de sistemas</td>
+  </tr>
+  <tr>
+    <td>⚙️</td><td><b>Automação</b> — Bash, Python e scripts pra matar o repetitivo</td>
+    <td>🌐</td><td><b>Redes</b> — protocolos, tráfego e como os dados viajam de verdade</td>
   </tr>
 </table>
 
----
+<!-- ═════════════════════════════════════════════════════════════════════════ -->
 
-## 🛠️ Stack e ferramentas
+## `[ 02 ]` ./arsenal --list
 
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=linux,bash,python,git,github,javascript,html,css,vscode" />
-</p>
+<div align="center">
 
----
+<img src="https://skillicons.dev/icons?i=linux,bash,python,git,github,javascript,html,css,vscode&theme=dark" alt="skills" />
 
-## 📊 Estatísticas do GitHub
+<br/><br/>
 
-<p align="center">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Mansonware&show_icons=true&theme=radical&hide_border=true" />
-  <img height="180em" src="https://github-readme-streak-stats.herokuapp.com/?user=Mansonware&theme=radical&hide_border=true" />
-</p>
+<img src="https://img.shields.io/badge/Kali-557C94?style=flat-square&logo=kalilinux&logoColor=white" />
+<img src="https://img.shields.io/badge/Wireshark-1679A7?style=flat-square&logo=wireshark&logoColor=white" />
+<img src="https://img.shields.io/badge/Nmap-4682B4?style=flat-square&logo=gnometerminal&logoColor=white" />
+<img src="https://img.shields.io/badge/Metasploit-2A2A2A?style=flat-square&logo=metasploit&logoColor=white" />
+<img src="https://img.shields.io/badge/Burp%20Suite-FF6633?style=flat-square&logo=burpsuite&logoColor=white" />
+<img src="https://img.shields.io/badge/Vim-019733?style=flat-square&logo=vim&logoColor=white" />
 
----
+</div>
 
-## 💡 Filosofia de trabalho
+<!-- ═════════════════════════════════════════════════════════════════════════ -->
 
-- Entender os sistemas por dentro, não apenas usá-los
-- Aprender criando, testando e experimentando
-- Automatizar o que se repete
-- Pensar com lógica e resolver problemas de forma estruturada
-- Evoluir de forma constante
+## `[ 03 ]` ./scan --stats
 
----
+<div align="center">
 
-## 🎯 Objetivos
+<img height="170em" src="https://github-readme-stats.vercel.app/api?username=Mansonware&show_icons=true&theme=chartreuse-dark&bg_color=0D1117&title_color=00FF9C&icon_color=00FF9C&text_color=c9d1d9&hide_border=true" alt="stats" />
+<img height="170em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Mansonware&layout=compact&theme=chartreuse-dark&bg_color=0D1117&title_color=00FF9C&text_color=c9d1d9&hide_border=true" alt="top langs" />
 
-- Desenvolver habilidades reais em cibersegurança
-- Criar projetos de automação e segurança
-- Construir um portfólio técnico forte
-- Crescer profissionalmente em tecnologia
+<br/>
 
----
+<img src="https://github-readme-streak-stats.herokuapp.com/?user=Mansonware&theme=highcontrast&background=0D1117&ring=00FF9C&fire=00FF9C&currStreakLabel=00FF9C&sideLabels=c9d1d9&dates=8b949e&hide_border=true" alt="streak" />
 
-<p align="center">
-  <b>Sempre aprendendo. Sempre melhorando. 🚀</b>
-</p>
+<br/>
+
+<img src="https://github-profile-trophy.vercel.app/?username=Mansonware&theme=matrix&no-frame=true&no-bg=true&column=7&margin-w=8" alt="trophies" />
+
+<br/><br/>
+
+<!-- snake "comendo" os commits — gerado pela GitHub Action (.github/workflows/snake.yml) -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Mansonware/Mansonware/output/snake-dark.svg" />
+  <img src="https://raw.githubusercontent.com/Mansonware/Mansonware/output/snake-dark.svg" alt="snake eating contributions" width="100%" />
+</picture>
+
+<sub>🐍 a cobra devora os commits do meu grafo de contribuições — atualiza sozinha a cada 12h</sub>
+
+</div>
+
+<!-- ═════════════════════════════════════════════════════════════════════════ -->
+
+## `[ 04 ]` ./payload --philosophy --goals
+
+<table>
+<tr>
+<td valign="top" width="50%">
+
+```diff
+@@ MODUS OPERANDI @@
++ Entender os sistemas por dentro
++ Aprender criando, testando, quebrando
++ Automatizar tudo que se repete
++ Pensar com lógica e estrutura
++ Evoluir de forma constante
+- Aceitar "porque sempre foi assim"
+```
+
+</td>
+<td valign="top" width="50%">
+
+```diff
+@@ TARGETS @@
++ Skills reais em cibersegurança
++ Projetos de automação e segurança
++ Portfólio técnico forte
++ Crescimento profissional em tech
+! status: in progress...
+```
+
+</td>
+</tr>
+</table>
+
+<!-- ═════════════════════════════════════════════════════════════════════════ -->
+
+<div align="center">
+
+```ansi
+[1;32mvisitor@mansonware:~$[0m [0;37mexit[0m
+[0;90mlogout[0m
+[1;32m[ connection closed — sempre aprendendo, sempre melhorando ][0m
+```
+
+<img src="https://capsule-render.vercel.app/api?type=venom&color=0:00FF9C,100:0D1117&height=120&section=footer" width="100%" alt="footer" />
+
+</div>
