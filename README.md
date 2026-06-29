@@ -2,20 +2,12 @@
 <!-- ║                    MANSONWARE // PROFILE TERMINAL                     ║ -->
 <!-- ╚══════════════════════════════════════════════════════════════════════╝ -->
 
+<!-- ░░ HERO: header SVG animado (chuva Matrix + glitch) — feito à mão ░░ -->
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=venom&color=0:0D1117,100:00FF9C&height=210&section=header&text=MANSONWARE&fontSize=62&fontColor=00FF9C&animation=fadeIn&fontAlignY=38&desc=%5B%20unauthorized%20access%20detected%20%5D&descAlignY=60&descSize=16" width="100%" alt="header" />
+<img src="./assets/header.svg" width="100%" alt="MANSONWARE — Cybersecurity · Linux · Automation" />
 
 </div>
-
-```ansi
-[2;32m ███╗   ███╗ █████╗ ███╗   ██╗███████╗ ██████╗ ███╗   ██╗██╗    ██╗ █████╗ ██████╗ ███████╗
- ████╗ ████║██╔══██╗████╗  ██║██╔════╝██╔═══██╗████╗  ██║██║    ██║██╔══██╗██╔══██╗██╔════╝
- ██╔████╔██║███████║██╔██╗ ██║███████╗██║   ██║██╔██╗ ██║██║ █╗ ██║███████║██████╔╝█████╗  
- ██║╚██╔╝██║██╔══██║██║╚██╗██║╚════██║██║   ██║██║╚██╗██║██║███╗██║██╔══██║██╔══██╗██╔══╝  
- ██║ ╚═╝ ██║██║  ██║██║ ╚████║███████║╚██████╔╝██║ ╚████║╚███╔███╔╝██║  ██║██║  ██║███████╗
- ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═══╝ ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝[0m
-```
 
 <div align="center">
 
@@ -126,6 +118,16 @@ visitor@mansonware:~$ ./philosophy.sh
 <br/>
 
 <img src="https://github-profile-trophy.vercel.app/?username=Mansonware&theme=matrix&no-frame=true&no-bg=true&column=7&margin-w=8" alt="trophies" />
+
+<br/><br/>
+
+<!-- snake "comendo" os commits — gerado pela GitHub Action (.github/workflows/snake.yml) -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Mansonware/Mansonware/output/snake-dark.svg" />
+  <img src="https://raw.githubusercontent.com/Mansonware/Mansonware/output/snake-dark.svg" alt="snake eating contributions" width="100%" />
+</picture>
+
+<sub>🐍 a cobra devora os commits do meu grafo de contribuições — atualiza sozinha a cada 12h</sub>
 
 </div>
 
