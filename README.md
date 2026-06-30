@@ -1,12 +1,19 @@
 <!-- ╔══════════════════════════════════════════════════════════════════════╗ -->
-<!-- ║   MANSONWARE // PROFILE  —  cyber/terminal · animações SVG à mão      ║ -->
-<!-- ║   assets/header.svg · assets/terminal.svg · assets/arsenal.svg       ║ -->
+<!-- ║   MANSONWARE // PROFILE  —  HUD dashboard · animações SVG à mão       ║ -->
+<!-- ║   header · boot · terminal · radar · arsenal  (assets/*.svg, SMIL)   ║ -->
 <!-- ╚══════════════════════════════════════════════════════════════════════╝ -->
 
-<!-- ░░ HERO — header animado feito à mão (matrix + glitch + scan + HUD) ░░ -->
+<!-- ░░ HERO — header animado (matrix dois-tons + glitch + scan + HUD) ░░ -->
 <div align="center">
 
 <img src="./assets/header.svg" width="100%" alt="MANSONWARE — Cibersegurança · Linux · Redes · Automação" />
+
+</div>
+
+<!-- ░░ BOOT — sequência de POST full-width (feita à mão, SMIL) ░░ -->
+<div align="center">
+
+<img src="./assets/boot.svg" width="100%" alt="sequência de boot do perfil" />
 
 </div>
 
@@ -17,15 +24,15 @@
   <img src="https://img.shields.io/badge/PORTF%C3%93LIO-ACCESS-00FF9C?style=for-the-badge&logo=vercel&logoColor=black&labelColor=0D1117" alt="Portfólio" />
 </a>
 <a href="https://github.com/Mansonware" target="_blank">
-  <img src="https://img.shields.io/badge/GITHUB-MANSONWARE-00FF9C?style=for-the-badge&logo=github&logoColor=00FF9C&labelColor=0D1117" alt="GitHub" />
+  <img src="https://img.shields.io/badge/GITHUB-MANSONWARE-19E3FF?style=for-the-badge&logo=github&logoColor=19E3FF&labelColor=0D1117" alt="GitHub" />
 </a>
-<img src="https://komarev.com/ghpvc/?username=Mansonware&style=for-the-badge&color=00FF9C&label=INTRUSIONS&labelColor=0D1117" alt="views" />
+<img src="https://komarev.com/ghpvc/?username=Mansonware&style=for-the-badge&color=19E3FF&label=INTRUSIONS&labelColor=0D1117" alt="views" />
 
 </div>
 
 <!-- ═════════════════════════════════════════════════════════════════════════ -->
 
-## `▸` `[ 01 ]` ./whoami
+## <samp>▚ `01` · ./whoami</samp>
 
 <div align="center">
 
@@ -49,12 +56,12 @@
 
 <!-- ═════════════════════════════════════════════════════════════════════════ -->
 
-## `▸` `[ 02 ]` ./arsenal --list
+## <samp>▚ `02` · ./arsenal --recon</samp>
 
 <div align="center">
 
-<!-- barras de proficiência animadas — SMIL feito à mão (assets/arsenal.svg) -->
-<img src="./assets/arsenal.svg" width="86%" alt="barras de proficiência animadas" />
+<!-- radar/sonar: skills como nós que "pingam" quando o feixe passa (SMIL) -->
+<img src="./assets/radar.svg" width="90%" alt="radar de skills (sonar) com nós que pingam" />
 
 <br/><br/>
 
@@ -71,18 +78,30 @@
 
 </div>
 
-<!-- ═════════════════════════════════════════════════════════════════════════ -->
-
-## `▸` `[ 03 ]` ./telemetry --scan
+<details>
+<summary><samp>▸ detalhamento por proficiência (barras animadas)</samp></summary>
 
 <div align="center">
 
-<img height="170em" src="https://github-readme-stats.vercel.app/api?username=Mansonware&show_icons=true&theme=chartreuse-dark&bg_color=0D1117&title_color=00FF9C&icon_color=00FF9C&text_color=c9d1d9&hide_border=true" alt="stats" />
+<!-- barras de proficiência animadas — SMIL feito à mão (assets/arsenal.svg) -->
+<img src="./assets/arsenal.svg" width="86%" alt="barras de proficiência animadas" />
+
+</div>
+
+</details>
+
+<!-- ═════════════════════════════════════════════════════════════════════════ -->
+
+## <samp>▚ `03` · ./telemetry --scan</samp>
+
+<div align="center">
+
+<img height="170em" src="https://github-readme-stats.vercel.app/api?username=Mansonware&show_icons=true&theme=chartreuse-dark&bg_color=0D1117&title_color=00FF9C&icon_color=19E3FF&text_color=c9d1d9&hide_border=true" alt="stats" />
 <img height="170em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Mansonware&layout=compact&theme=chartreuse-dark&bg_color=0D1117&title_color=00FF9C&text_color=c9d1d9&hide_border=true" alt="top langs" />
 
 <br/>
 
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=Mansonware&theme=highcontrast&background=0D1117&ring=00FF9C&fire=00FF9C&currStreakLabel=00FF9C&sideLabels=c9d1d9&dates=8b949e&hide_border=true" alt="streak" />
+<img src="https://github-readme-streak-stats.herokuapp.com/?user=Mansonware&theme=highcontrast&background=0D1117&ring=19E3FF&fire=00FF9C&currStreakLabel=19E3FF&sideLabels=c9d1d9&dates=8b949e&hide_border=true" alt="streak" />
 
 <br/>
 
@@ -102,7 +121,7 @@
 
 <!-- ═════════════════════════════════════════════════════════════════════════ -->
 
-## `▸` `[ 04 ]` ./manifesto
+## <samp>▚ `04` · ./manifesto</samp>
 
 <table>
 <tr>
@@ -144,6 +163,6 @@
 [1;32m[ connection closed — sempre aprendendo, sempre quebrando ][0m
 ```
 
-<img src="https://capsule-render.vercel.app/api?type=venom&color=0:00FF9C,100:0D1117&height=120&section=footer" width="100%" alt="footer" />
+<img src="https://capsule-render.vercel.app/api?type=venom&color=0:19E3FF,100:0D1117&height=120&section=footer" width="100%" alt="footer" />
 
 </div>
