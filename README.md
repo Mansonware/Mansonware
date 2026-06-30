@@ -1,54 +1,16 @@
 <!-- ╔══════════════════════════════════════════════════════════════════════╗ -->
-<!-- ║                    MANSONWARE // PROFILE TERMINAL                     ║ -->
+<!-- ║   MANSONWARE // PROFILE  —  cyber/terminal · animações SVG à mão      ║ -->
+<!-- ║   assets/header.svg · assets/terminal.svg · assets/arsenal.svg       ║ -->
 <!-- ╚══════════════════════════════════════════════════════════════════════╝ -->
 
-<!-- ░░ HERO: header SVG animado (chuva Matrix + glitch) — feito à mão ░░ -->
+<!-- ░░ HERO — header animado feito à mão (matrix + glitch + scan + HUD) ░░ -->
 <div align="center">
 
-<img src="./assets/header.svg" width="100%" alt="MANSONWARE — Cybersecurity · Linux · Automation" />
+<img src="./assets/header.svg" width="100%" alt="MANSONWARE — Cibersegurança · Linux · Redes · Automação" />
 
 </div>
 
-<div align="center">
-
-<a href="https://mansonware-portfolio.vercel.app">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=900&color=00FF9C&center=true&vCenter=true&width=820&lines=%3E+initializing+breach...;%3E+bypassing+firewall...;%3E+access+granted+_;%3E+Estudante+de+Ciberseguran%C3%A7a;%3E+Quebrar+%E2%86%92+Entender+%E2%86%92+Reconstruir" alt="Typing SVG" />
-</a>
-
-</div>
-
-```ansi
-[1;32m┌──([1;36mvisitor㉿mansonware[1;32m)-[[0;37m~/profile[1;32m]
-[1;32m└─[1;36m$[0m ssh manson@core.system --connect
-
-[0;90m[ * ] establishing secure shell ...........[1;32m OK[0m
-[0;90m[ * ] handshake / key exchange .............[1;32m OK[0m
-[0;90m[ * ] decrypting identity ..................[1;32m OK[0m
-[1;32m[ ✓ ] ACCESS GRANTED — welcome to the core.[0m
-```
-
-<!-- ─────────────────────────────  NEOFETCH CARD  ───────────────────────────── -->
-
-```ansi
-[1;32m       _,met$$$$$gg.[0m          [1;36mmanson[0m@[1;36mmansonware[0m
-[1;32m    ,g$$$$$$$$$$$$$$$P.[0m       [0;90m─────────────────────────────[0m
-[1;32m  ,g$$P""       """Y$$.".[0m     [1;32mOS[0m         : Linux (Arch btw)
-[1;32m ,$$P'              `$$$.[0m     [1;32mHost[0m       : Cybersecurity Student
-[1;32m',$$P       ,ggs.     `$$b:[0m    [1;32mShell[0m      : bash / zsh
-[1;32m`d$$'     ,$P"'   .    $$$[0m     [1;32mFocus[0m      : Security · Linux · Networking
-[1;32m $$P      d$'     ,    $$P[0m     [1;32mLang[0m       : Python · Bash · JS
-[1;32m $$:      $$.   -    ,d$$'[0m     [1;32mUptime[0m     : sempre aprendendo
-[1;32m $$;      Y$b._   _,d$P'[0m       [1;32mMindset[0m    : build · test · break · learn
-[1;32m Y$$.    `.`"Y$$$$P"'[0m         [1;32mEthics[0m     : white-hat only
-[1;32m `$$b      "-.__[0m              [0;37m███[1;32m███[0;90m███[1;36m███[0;37m███[0m
-[1;32m  `Y$$[0m
-[1;32m   `Y$$.[0m
-[1;32m     `$$b.[0m
-[1;32m       `Y$$b.[0m
-[1;32m          `"Y$b._[0m
-[1;32m              `"""[0m
-```
-
+<!-- ░░ LINKS ░░ -->
 <div align="center">
 
 <a href="https://mansonware-portfolio.vercel.app" target="_blank">
@@ -63,31 +25,38 @@
 
 <!-- ═════════════════════════════════════════════════════════════════════════ -->
 
-## `[ 01 ]` ./whoami
+## `▸` `[ 01 ]` ./whoami
 
-> Entusiasta de tecnologia construindo uma base sólida em **cibersegurança**, **sistemas Linux**, **redes** e **automação**. Gosto de entender como as coisas funcionam por dentro, aprender na prática e transformar conhecimento em armas — digo, ferramentas. 😎
+<div align="center">
 
-```bash
-visitor@mansonware:~$ ./philosophy.sh
-> "Construir, testar, quebrar e aprender — nessa ordem, em loop."
-```
+<!-- terminal que se digita sozinho — SMIL feito à mão (assets/terminal.svg) -->
+<img src="./assets/terminal.svg" width="86%" alt="terminal animado: whoami / focus / mindset / status" />
+
+</div>
+
+> Estudante de tecnologia construindo uma base sólida em **cibersegurança**, **sistemas Linux**, **redes** e **automação**. Gosto de entender como as coisas funcionam por dentro, aprender na prática e transformar conhecimento em ferramentas.
 
 <table>
   <tr>
-    <td>🔐</td><td><b>Segurança</b> — fundamentos, raciocínio defensivo e mindset ético</td>
-    <td>🐧</td><td><b>Linux</b> — CLI, ambientes Unix-like e internals de sistemas</td>
+    <td align="center" width="50%">🔐 <b>Segurança</b><br/><sub>fundamentos, raciocínio defensivo e mindset ético</sub></td>
+    <td align="center" width="50%">🐧 <b>Linux</b><br/><sub>CLI, ambientes Unix-like e internals de sistema</sub></td>
   </tr>
   <tr>
-    <td>⚙️</td><td><b>Automação</b> — Bash, Python e scripts pra matar o repetitivo</td>
-    <td>🌐</td><td><b>Redes</b> — protocolos, tráfego e como os dados viajam de verdade</td>
+    <td align="center">⚙️ <b>Automação</b><br/><sub>Bash e Python pra matar o repetitivo</sub></td>
+    <td align="center">🌐 <b>Redes</b><br/><sub>protocolos, tráfego e como os dados viajam de verdade</sub></td>
   </tr>
 </table>
 
 <!-- ═════════════════════════════════════════════════════════════════════════ -->
 
-## `[ 02 ]` ./arsenal --list
+## `▸` `[ 02 ]` ./arsenal --list
 
 <div align="center">
+
+<!-- barras de proficiência animadas — SMIL feito à mão (assets/arsenal.svg) -->
+<img src="./assets/arsenal.svg" width="86%" alt="barras de proficiência animadas" />
+
+<br/><br/>
 
 <img src="https://skillicons.dev/icons?i=linux,bash,python,git,github,javascript,html,css,vscode&theme=dark" alt="skills" />
 
@@ -104,7 +73,7 @@ visitor@mansonware:~$ ./philosophy.sh
 
 <!-- ═════════════════════════════════════════════════════════════════════════ -->
 
-## `[ 03 ]` ./scan --stats
+## `▸` `[ 03 ]` ./telemetry --scan
 
 <div align="center">
 
@@ -133,7 +102,7 @@ visitor@mansonware:~$ ./philosophy.sh
 
 <!-- ═════════════════════════════════════════════════════════════════════════ -->
 
-## `[ 04 ]` ./payload --philosophy --goals
+## `▸` `[ 04 ]` ./manifesto
 
 <table>
 <tr>
@@ -172,7 +141,7 @@ visitor@mansonware:~$ ./philosophy.sh
 ```ansi
 [1;32mvisitor@mansonware:~$[0m [0;37mexit[0m
 [0;90mlogout[0m
-[1;32m[ connection closed — sempre aprendendo, sempre melhorando ][0m
+[1;32m[ connection closed — sempre aprendendo, sempre quebrando ][0m
 ```
 
 <img src="https://capsule-render.vercel.app/api?type=venom&color=0:00FF9C,100:0D1117&height=120&section=footer" width="100%" alt="footer" />
