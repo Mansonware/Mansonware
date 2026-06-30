@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="238" viewBox="0 0 1200 238" fill="none" font-family="monospace">
+<defs>
+  <linearGradient id="bootbg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#04100b"/><stop offset="100%" stop-color="#020604"/>
+  </linearGradient>
+  <linearGradient id="bootgrad" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#00ff9c"/><stop offset="100%" stop-color="#19e3ff"/>
+  </linearGradient>
+  <filter id="bglow" x="-20%" y="-50%" width="140%" height="200%">
+    <feGaussianBlur stdDeviation="1.6" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+<rect width="1200" height="238" rx="10" fill="url(#bootbg)"
+      stroke="#00ff9c" stroke-opacity="0.22"/>
+<line x1="64" y1="40" x2="1136" y2="40" stroke="#19e3ff" stroke-opacity="0.25"/>
+<text x="64" y="30" font-size="13" letter-spacing="2"
+      font-family="Consolas,Menlo,monospace" fill="#19e3ff">core@boot — POST sequence</text>
+<text x="1136" y="30" font-size="13" text-anchor="end"
+      font-family="Consolas,Menlo,monospace" fill="#7d8794">bios v2.0 · mansonware</text>
+<rect x="64" y="58" width="9" height="16" fill="#00ff9c"><animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.5;0.5;1" dur="1s" repeatCount="indefinite"/><animate attributeName="y" values="58;58" keyTimes="0;1" dur="0.1s" fill="freeze"/><animate attributeName="x" from="64" to="394" dur="0.1s" begin="2.8s" fill="freeze"/><animate attributeName="y" from="58" to="190" dur="0.1s" begin="2.8s" fill="freeze"/></rect>
+<g opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.18s" begin="0.3s" fill="freeze"/><text x="64" y="70" font-size="15" font-family="Consolas,Menlo,monospace"><tspan fill="#7d8794">[</tspan><tspan fill="#00ff9c"> OK </tspan><tspan fill="#7d8794">]  </tspan><tspan fill="#c9d1d9">init core modules</tspan></text><text x="720" y="70" font-size="15" text-anchor="end" font-family="Consolas,Menlo,monospace" fill="#5dff9c">··············· done</text></g>
+<g opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.18s" begin="0.8s" fill="freeze"/><text x="64" y="94" font-size="15" font-family="Consolas,Menlo,monospace"><tspan fill="#7d8794">[</tspan><tspan fill="#00ff9c"> OK </tspan><tspan fill="#7d8794">]  </tspan><tspan fill="#c9d1d9">mount /security /linux /networks</tspan></text><text x="720" y="94" font-size="15" text-anchor="end" font-family="Consolas,Menlo,monospace" fill="#5dff9c">··············· done</text></g>
+<g opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.18s" begin="1.3s" fill="freeze"/><text x="64" y="118" font-size="15" font-family="Consolas,Menlo,monospace"><tspan fill="#7d8794">[</tspan><tspan fill="#00ff9c"> OK </tspan><tspan fill="#7d8794">]  </tspan><tspan fill="#c9d1d9">load automation daemons</tspan></text><text x="720" y="118" font-size="15" text-anchor="end" font-family="Consolas,Menlo,monospace" fill="#5dff9c">··············· done</text></g>
+<g opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.18s" begin="1.8s" fill="freeze"/><text x="64" y="142" font-size="15" font-family="Consolas,Menlo,monospace"><tspan fill="#7d8794">[</tspan><tspan fill="#00ff9c"> OK </tspan><tspan fill="#7d8794">]  </tspan><tspan fill="#c9d1d9">establish secure shell · ssh</tspan></text><text x="720" y="142" font-size="15" text-anchor="end" font-family="Consolas,Menlo,monospace" fill="#5dff9c">··············· done</text></g>
+<g opacity="0"><animate attributeName="opacity" from="0" to="1" dur="0.18s" begin="2.3s" fill="freeze"/><text x="64" y="166" font-size="15" font-family="Consolas,Menlo,monospace"><tspan fill="#7d8794">[</tspan><tspan fill="#00ff9c"> OK </tspan><tspan fill="#7d8794">]  </tspan><tspan fill="#c9d1d9">decrypt identity</tspan></text><text x="720" y="166" font-size="15" text-anchor="end" font-family="Consolas,Menlo,monospace" fill="#19e3ff">··············· manson</text></g>
+<text x="64" y="198" font-size="13" font-family="Consolas,Menlo,monospace" fill="#7d8794" opacity="1">&gt;&gt; carregando módulos do kernel...<animate attributeName="opacity" from="1" to="0" dur="0.2s" begin="2.7s" fill="freeze"/></text><text x="64" y="198" font-size="13" font-weight="700" font-family="Consolas,Menlo,monospace" fill="#d8ffe6" opacity="0">&gt;&gt; PROFILE LOADED — sessão pronta<animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="2.8s" fill="freeze"/></text><text x="1136" y="198" font-size="13" text-anchor="end" font-family="Consolas,Menlo,monospace" fill="#19e3ff" opacity="0">100%<animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="2.8s" fill="freeze"/></text>
+<rect x="64" y="210" width="1072" height="6" rx="3" fill="#0c1a14" stroke="#00ff9c" stroke-opacity="0.18"/><rect x="64" y="210" width="0" height="6" rx="3" fill="url(#bootgrad)" filter="url(#bglow)"><animate attributeName="width" from="0" to="1072" dur="2.5s" begin="0.3s" fill="freeze"/></rect>
+</svg>
