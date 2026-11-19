@@ -3,19 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="theme-color" content="#10120f" />
+    <meta name="theme-color" content="#131615" />
     <meta name="referrer" content="no-referrer" />
     <title>Mansonware — Sites, catálogos e automações para empresas</title>
     <meta
       name="description"
-      content="Landing pages a partir de R$ 297, sites, catálogos e automações para empresas em todo o Brasil. Experimente as demos e simule seu projeto com a Mansonware."
+      content="Landing pages a partir de R$ 297, sites, catálogos e automações para empresas em todo o Brasil. Veja projetos da Mansonware e peça uma proposta pelo WhatsApp."
     />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:site_name" content="Mansonware" />
     <meta
       property="og:title"
-      content="Mansonware — Sites que viram conversas."
+      content="Mansonware — Sites e automações para empresas."
     />
     <meta
       property="og:description"
@@ -26,7 +26,7 @@
     <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
-      content="Mansonware. Sites que viram conversas."
+      content="Mansonware. Sites e automações para empresas."
     />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="./media/icon.svg" type="image/svg+xml" />
@@ -62,8 +62,10 @@
           ></a
         >
         <nav aria-label="Navegação principal">
-          <a href="#projetos">Projetos</a><a href="#demos">Demos</a
-          ><a href="#servicos">Serviços</a><a href="#estudio">Estúdio</a>
+          <a href="#servicos">Serviços</a>
+          <a href="#projetos">Projetos</a>
+          <a href="#demos">Exemplos</a>
+          <a href="#duvidas">Dúvidas</a>
         </nav>
         <a class="nav-cta" href="#orcamento"
           >Pedir orçamento <span aria-hidden="true">↗</span></a
@@ -73,177 +75,44 @@
     <main id="conteudo">
       <section class="hero wrap">
         <div class="hero-copy">
-          <p class="kicker">
-            <span class="signal"></span> Estúdio digital independente
-          </p>
-          <h1>Sites que viram<br /><em>conversas.</em></h1>
+          <h1>Sites e automações para empresas.</h1>
           <p class="lead">
-            Design, desenvolvimento e automação para quem quer transformar
-            visitas em pedidos pelo WhatsApp.
+            Crio sites para apresentar seus serviços, catálogos para receber
+            pedidos pelo WhatsApp e automações para o atendimento do dia a dia.
+          </p>
+          <p class="hero-note">
+            Landing pages a partir de <strong>R$ 297</strong>
           </p>
           <div class="actions">
-            <a class="btn primary" href="#orcamento"
-              >Simular meu projeto <span aria-hidden="true">↗</span></a
-            ><a class="quiet" href="#demos"
-              ><span class="play" aria-hidden="true">▷</span> Testar uma demo</a
+            <a class="btn primary" href="#orcamento">Pedir orçamento</a>
+            <a class="quiet" href="#projetos"
+              >Ver projetos <span aria-hidden="true">↓</span></a
             >
           </div>
-          <p class="hero-note">Landing pages a partir de <b>R$ 297</b></p>
         </div>
-        <div class="art" aria-hidden="true">
-          <div class="orbit"></div>
-          <div class="cross tl"></div>
-          <div class="cross br"></div>
+        <a href="#demos" id="featured-demo" class="example-cover">
           <img
-            src="./media/monograma.webp"
-            width="900"
-            height="610"
+            src="./media/forno.webp"
+            width="820"
+            height="547"
             fetchpriority="high"
             alt=""
           />
-          <div class="art-label">
-            <span>MW<span class="acid"> / </span>STUDIO</span
-            ><span>IDENTIDADE VISUAL</span>
-          </div>
-        </div>
-      </section>
-      <div class="band">
-        <div class="wrap">
-          <span><i></i> Atendimento em todo o Brasil</span
-          ><span><i></i> Contato direto com o fundador</span
-          ><span><i></i> Escopo definido em proposta</span>
-        </div>
-      </div>
-      <section id="demos" class="section wrap">
-        <div class="eyeline">Demonstrações interativas</div>
-        <div class="section-head">
-          <h2>Teste antes de pedir.</h2>
-          <p>
-            Escolha um segmento e experimente o que seu cliente poderia fazer no
-            site.
-          </p>
-        </div>
-        <div class="demo-tools" aria-label="Escolher demonstração">
-          <button type="button" data-demo="forno" aria-pressed="true">
-            Gastronomia</button
-          ><button type="button" data-demo="pousada" aria-pressed="false">
-            Hospedagem</button
-          ><button type="button" data-demo="barbearia" aria-pressed="false">
-            Barbearia
-          </button>
-        </div>
-        <div class="demo-window">
-          <div class="chrome">
-            <span class="lights" aria-hidden="true">● ● ●</span
-            ><span>Demonstração fictícia</span
-            ><span aria-hidden="true">↗</span>
-          </div>
-          <div id="demo-stage" class="demo-stage" data-theme="forno">
-            <div class="demo-copy">
-              <p id="demo-brand" class="demo-brand">Casa Forno</p>
-              <h3 id="demo-title">Pizza de<br />fermentação lenta.</h3>
-              <p id="demo-sub">Escolha um sabor e veja o resumo do pedido.</p>
-              <form id="demo-form">
-                <label for="demo-choice" id="demo-label">Sabor da pizza</label>
-                <div class="demo-controls">
-                  <select id="demo-choice">
-                    <option>Margherita</option>
-                    <option>Quatro queijos</option>
-                    <option>Calabresa</option></select
-                  ><button id="demo-submit" type="submit">Montar pedido</button>
-                </div>
-              </form>
-              <output id="demo-result" aria-live="polite"></output>
-            </div>
-            <img
-              id="demo-photo"
-              src="./media/forno.webp"
-              width="820"
-              height="547"
-              loading="lazy"
-              alt="Pizza margherita com manjericão"
-            />
-          </div>
-        </div>
-        <a href="#orcamento" class="text-link" id="demo-quote"
-          >Quero um projeto para gastronomia
-          <span aria-hidden="true">↗</span></a
-        >
-      </section>
-      <section id="projetos" class="panel-section">
-        <div class="section wrap">
-          <div class="eyeline">Portfólio</div>
-          <div class="section-head">
-            <h2>Projetos reais.</h2>
-            <p>
-              Do balcão de uma lanchonete à automação de ofertas. Abra cada
-              projeto para conhecer a solução.
-            </p>
-          </div>
-          <details class="case">
-            <summary>
-              <span class="case-sector">Gastronomia</span
-              ><strong>Magali Lanches</strong
-              ><span class="case-state">Entregue</span>
-            </summary>
+          <div class="example-caption">
             <div>
-              <h3>Do cardápio à cozinha</h3>
-              <p>
-                O cliente escolhe os lanches, monta o carrinho e segue para o
-                WhatsApp com o pedido organizado. Na operação, a integração com
-                impressão térmica leva o pedido até a cozinha.
-              </p>
+              <small>Exemplo de cardápio digital</small
+              ><strong>Casa Forno</strong>
             </div>
-          </details>
-          <details class="case">
-            <summary>
-              <span class="case-sector">Varejo autoral</span
-              ><strong>Capivari Atelier</strong
-              ><span class="case-state">Em desenvolvimento</span>
-            </summary>
-            <div>
-              <h3>Uma vitrine para peças autorais</h3>
-              <p>
-                Catálogo com fotos das peças, sacola e fluxo de pedido. O
-                trabalho em andamento organiza a apresentação dos produtos e o
-                contato com o atelier.
-              </p>
-            </div>
-          </details>
-          <details class="case">
-            <summary>
-              <span class="case-sector">Produto próprio</span>
-              <strong>Storefy</strong>
-              <span class="case-state">Em desenvolvimento</span>
-            </summary>
-            <div>
-              <h3>Vitrines digitais para lojistas</h3>
-              <p>Uma plataforma em desenvolvimento para criar a vitrine de cada loja, organizar produtos e encaminhar o cliente ao atendimento pelo WhatsApp.</p>
-            </div>
-          </details>
-          <details class="case">
-            <summary>
-              <span class="case-sector">Automação</span><strong>OfferBot</strong
-              ><span class="case-state">Prova de conceito</span>
-            </summary>
-            <div>
-              <h3>Uma fila para organizar ofertas</h3>
-              <p>
-                Protótipo que importa ofertas, agenda envios e simula o
-                processamento de mensagens com controle de fila e recuperação de
-                falhas.
-              </p>
-            </div>
-          </details>
-        </div>
+            <span>Testar <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
       </section>
       <section id="servicos" class="section wrap">
-        <div class="eyeline">Serviços e investimento</div>
         <div class="section-head">
-          <h2>Por onde começar?</h2>
+          <h2>Serviços e preços</h2>
           <p>
-            Escolha a solução pelo que seu cliente precisa fazer. O escopo e o
-            preço final são combinados antes do início.
+            Confira os valores iniciais. A proposta detalha o que está incluído,
+            o prazo e o preço final.
           </p>
         </div>
         <div class="offers">
@@ -373,20 +242,144 @@
           </article>
         </div>
       </section>
+      <section id="projetos" class="panel-section">
+        <div class="section wrap">
+          <div class="section-head">
+            <h2>Projetos da Mansonware</h2>
+            <p>
+              Veja o que foi desenvolvido para cada negócio e quais projetos
+              ainda estão em andamento.
+            </p>
+          </div>
+          <details class="case">
+            <summary>
+              <span class="case-sector">Gastronomia</span
+              ><strong>Magali Lanches</strong
+              ><span class="case-state">Entregue</span>
+            </summary>
+            <div>
+              <h3>Do cardápio à cozinha</h3>
+              <p>
+                O cliente escolhe os lanches, monta o carrinho e segue para o
+                WhatsApp com o pedido organizado. Na operação, a integração com
+                impressão térmica leva o pedido até a cozinha.
+              </p>
+            </div>
+          </details>
+          <details class="case">
+            <summary>
+              <span class="case-sector">Varejo autoral</span
+              ><strong>Capivari Atelier</strong
+              ><span class="case-state">Em desenvolvimento</span>
+            </summary>
+            <div>
+              <h3>Uma vitrine para peças autorais</h3>
+              <p>
+                Catálogo com fotos das peças, sacola e fluxo de pedido. O
+                trabalho em andamento organiza a apresentação dos produtos e o
+                contato com o atelier.
+              </p>
+            </div>
+          </details>
+          <details class="case">
+            <summary>
+              <span class="case-sector">Produto próprio</span>
+              <strong>Storefy</strong>
+              <span class="case-state">Em desenvolvimento</span>
+            </summary>
+            <div>
+              <h3>Vitrines digitais para lojistas</h3>
+              <p>
+                Uma plataforma em desenvolvimento para criar a vitrine de cada
+                loja, organizar produtos e encaminhar o cliente ao atendimento
+                pelo WhatsApp.
+              </p>
+            </div>
+          </details>
+          <details class="case">
+            <summary>
+              <span class="case-sector">Automação</span><strong>OfferBot</strong
+              ><span class="case-state">Prova de conceito</span>
+            </summary>
+            <div>
+              <h3>Uma fila para organizar ofertas</h3>
+              <p>
+                Protótipo que importa ofertas, agenda envios e simula o
+                processamento de mensagens com controle de fila e recuperação de
+                falhas.
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
+      <section id="demos" class="section wrap">
+        <div class="section-head">
+          <h2>Exemplos por segmento</h2>
+          <p>
+            Escolha um segmento e experimente o que seu cliente poderia fazer no
+            site.
+          </p>
+        </div>
+        <div class="demo-tools" aria-label="Escolher demonstração">
+          <button type="button" data-demo="forno" aria-pressed="true">
+            Gastronomia</button
+          ><button type="button" data-demo="pousada" aria-pressed="false">
+            Hospedagem</button
+          ><button type="button" data-demo="barbearia" aria-pressed="false">
+            Barbearia
+          </button>
+        </div>
+        <div class="demo-window">
+          <div class="chrome">
+            <span class="lights" aria-hidden="true">● ● ●</span
+            ><span>Demonstração fictícia</span
+            ><span aria-hidden="true">↗</span>
+          </div>
+          <div id="demo-stage" class="demo-stage" data-theme="forno">
+            <div class="demo-copy">
+              <p id="demo-brand" class="demo-brand">Casa Forno</p>
+              <h3 id="demo-title">Pizza de<br />fermentação lenta.</h3>
+              <p id="demo-sub">Escolha um sabor e veja o resumo do pedido.</p>
+              <form id="demo-form">
+                <label for="demo-choice" id="demo-label">Sabor da pizza</label>
+                <div class="demo-controls">
+                  <select id="demo-choice">
+                    <option>Margherita</option>
+                    <option>Quatro queijos</option>
+                    <option>Calabresa</option></select
+                  ><button id="demo-submit" type="submit">Montar pedido</button>
+                </div>
+              </form>
+              <output id="demo-result" aria-live="polite"></output>
+            </div>
+            <img
+              id="demo-photo"
+              src="./media/forno.webp"
+              width="820"
+              height="547"
+              loading="lazy"
+              alt="Pizza margherita com manjericão"
+            />
+          </div>
+        </div>
+        <a href="#orcamento" class="text-link" id="demo-quote"
+          >Quero um projeto para gastronomia
+          <span aria-hidden="true">↗</span></a
+        >
+      </section>
       <section id="orcamento" class="quote-section">
         <div class="wrap section quote-grid">
           <div>
-            <div class="eyeline">Simulador de orçamento</div>
-            <h2>Vamos colocar seu projeto <em>no papel.</em></h2>
+            <h2>Simule seu orçamento</h2>
             <p class="lead">
-              Monte uma estimativa e leve o resumo para a conversa com Manson.
-              Você revisa a mensagem no WhatsApp antes de enviar.
+              Escolha um serviço e veja o valor inicial. Você revisa a mensagem
+              no WhatsApp antes de enviar.
             </p>
             <a
               class="text-link"
               data-direct
               href="https://wa.me/5512996335539?text=Ol%C3%A1%2C%20Manson%21%20Vim%20pelo%20site%20da%20Mansonware%20e%20quero%20conversar%20sobre%20um%20projeto."
-              >Prefiro falar direto <span aria-hidden="true">↗</span></a
+              >Falar com Manson <span aria-hidden="true">↗</span></a
             >
           </div>
           <form id="brief" class="brief">
@@ -478,33 +471,10 @@
           >
         </div>
       </section>
-      <section id="estudio" class="section wrap founder">
-        <div>
-          <div class="eyeline">Estúdio independente</div>
-          <h2>Quem vai cuidar<br />do seu projeto?</h2>
-        </div>
-        <div>
-          <h3>Geovanne Melo da Silva <span>/ Manson</span></h3>
-          <p>
-            Sou o fundador da Mansonware e desenvolvedor full stack em Campos do
-            Jordão, SP. Trabalho com sites, integrações e automações para
-            empresas de todo o Brasil.
-          </p>
-          <p>
-            Você fala comigo desde a primeira conversa. Juntos definimos o que o
-            cliente precisa conseguir fazer, revisamos uma prévia e testamos o
-            fluxo antes de publicar.
-          </p>
-          <a class="text-link" href="https://github.com/Mansonware"
-            >Conhecer meu GitHub <span aria-hidden="true">↗</span></a
-          >
-        </div>
-      </section>
-      <section class="panel-section">
+      <section id="duvidas" class="panel-section">
         <div class="section wrap faq">
           <div>
-            <div class="eyeline">Perguntas frequentes</div>
-            <h2>Antes de começar.</h2>
+            <h2>Perguntas frequentes</h2>
           </div>
           <div>
             <details>
@@ -546,9 +516,9 @@
             <details>
               <summary>Vocês atendem minha cidade?</summary>
               <p>
-                Sim. O estúdio fica em Campos do Jordão, SP, e atende
-                remotamente em todo o Brasil. Você conversa diretamente com o
-                fundador pelo WhatsApp.
+                Sim. Atendo empresas de todo o Brasil a partir de Campos do
+                Jordão, SP. A conversa e as revisões podem ser feitas à
+                distância.
               </p>
             </details>
           </div>
@@ -569,6 +539,10 @@
           >WhatsApp · (12) 99633-5539 ↗</a
         >
       </div>
+      <p class="contact-byline">
+        Geovanne Melo da Silva (Manson), fundador e desenvolvedor. Campos do
+        Jordão, SP · Atendimento em todo o Brasil.
+      </p>
       <details class="privacy">
         <summary>Privacidade e métricas</summary>
         <p>
