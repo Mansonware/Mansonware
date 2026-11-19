@@ -6,7 +6,9 @@ import { chromium } from "playwright";
 
 const require = createRequire(import.meta.url);
 const url = "http://127.0.0.1:4173";
-const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || undefined });
+const browser = await chromium.launch({
+  executablePath: process.env.CHROME_PATH || undefined,
+});
 const context = await browser.newContext({
   reducedMotion: "reduce",
   bypassCSP: true,
@@ -224,6 +226,27 @@ try {
     if (m.type() === "error") errors.push(m.text());
   });
   await protectedPage.goto(url);
+  await protectedPage.click("#play-journey");
+  assert(
+    await protectedPage
+      .locator(".order-bubble")
+      .evaluate((el) => el.getAnimations().length > 0),
+  );
+  await protectedPage.emulateMedia({ reducedMotion: "reduce" });
+  await protectedPage.locator("#play-journey").waitFor({ state: "hidden" });
+  assert.equal(
+    await protectedPage
+      .locator(".journey")
+      .evaluate((el) => el.getAnimations({ subtree: true }).length),
+    0,
+  );
+  assert.equal(
+    await protectedPage
+      .locator(".order-bubble")
+      .evaluate((el) => getComputedStyle(el).opacity),
+    "1",
+  );
+  console.log("PASS motion replay and static order with reduced motion");
   await protectedPage.click("[data-demo=pousada]");
   assert.equal(
     await protectedPage.textContent("#demo-brand"),

@@ -200,6 +200,79 @@ consent.addEventListener("change", () => {
 });
 countVisit();
 
-document.querySelectorAll("[data-preview]").forEach((link) => {
-  link.addEventListener("click", () => switchDemo(link.dataset.preview));
-});
+// Play the catalogue journey once when visible. Its resting state is also the no-JS view.
+const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const journey = document.querySelector(".journey");
+const replay = byId("play-journey");
+const effects = new Set();
+function animateElement(element, frames, timing) {
+  const effect = element.animate(frames, timing);
+  effects.add(effect);
+  effect.finished.then(
+    () => effects.delete(effect),
+    () => effects.delete(effect),
+  );
+}
+function playJourney() {
+  if (motion.matches) return;
+  for (const item of journey.getAnimations({ subtree: true })) item.cancel();
+  const entrance = [
+    { opacity: 0, transform: "translateY(16px) scale(.97)" },
+    { opacity: 1, transform: "none" },
+  ];
+  animateElement(journey.querySelector(".product-screen"), entrance, {
+    duration: 650,
+    easing: "ease-out",
+  });
+  animateElement(
+    journey.querySelector(".sample-add"),
+    [
+      { transform: "scale(1)" },
+      { transform: "scale(1.3)", background: "#956042" },
+      { transform: "scale(1)" },
+    ],
+    { duration: 520, delay: 1050 },
+  );
+  animateElement(journey.querySelector(".order-bubble"), entrance, {
+    duration: 620,
+    delay: 1580,
+    fill: "backwards",
+    easing: "cubic-bezier(.16,1,.3,1)",
+  });
+}
+if ("IntersectionObserver" in window && typeof journey.animate === "function") {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        observer.unobserve(entry.target);
+        if (motion.matches) continue;
+        if (entry.target === journey) playJourney();
+        else
+          animateElement(
+            entry.target,
+            [
+              { opacity: 0.35, transform: "translateY(14px)" },
+              { opacity: 1, transform: "none" },
+            ],
+            { duration: 420, easing: "ease-out" },
+          );
+      }
+    },
+    { threshold: 0.15 },
+  );
+  const syncMotion = () => {
+    observer.disconnect();
+    for (const effect of effects) effect.cancel();
+    replay.hidden = motion.matches;
+    if (!motion.matches) {
+      observer.observe(journey);
+      document
+        .querySelectorAll(".section-head, .case, .offer")
+        .forEach((element) => observer.observe(element));
+    }
+  };
+  replay.addEventListener("click", playJourney);
+  motion.addEventListener("change", syncMotion);
+  syncMotion();
+}

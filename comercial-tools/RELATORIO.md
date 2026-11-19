@@ -33,3 +33,5 @@ Monograma e composição social criados para a Mansonware. Fonte DM Sans distrib
 - [Gastronomia](https://images.unsplash.com/photo-1574071318508-1cdbab80d002)
 - [Hospedagem](https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8)
 - [Barbearia](https://images.unsplash.com/photo-1503951914875-452162b0f3f1)
+
+- [Relógio da demonstração de catálogo](https://images.unsplash.com/photo-1524805444758-089113d48a6d)
