@@ -83,12 +83,19 @@ try {
     "Pular para o conteúdo",
   );
   await page.keyboard.press("Enter");
-  for (const name of ["Projetos", "Demos", "Serviços", "Estúdio"]) {
+  for (const name of ["Serviços", "Projetos", "Exemplos", "Dúvidas"]) {
     await page
       .getByRole("navigation")
       .getByRole("link", { name, exact: true })
       .click();
   }
+  assert.doesNotMatch(
+    await page.locator("body").innerText(),
+    /estúdio|\bstudio\b/i,
+  );
+  await page.click('[data-demo="pousada"]');
+  await page.click("#featured-demo");
+  assert.equal(await page.getAttribute("#demo-stage", "data-theme"), "forno");
   for (const selector of [".case", ".faq details"]) {
     await page
       .locator(selector + " summary")

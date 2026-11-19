@@ -1,7 +1,10 @@
 name: Testar site comercial
 on:
   push:
-    branches: [feat/site-comercial-mansonware, main]
+    branches: [main]
+    paths:
+      ["comercial/**", "comercial-tools/**", ".github/workflows/comercial.yml"]
+  pull_request:
     paths:
       ["comercial/**", "comercial-tools/**", ".github/workflows/comercial.yml"]
   workflow_dispatch:

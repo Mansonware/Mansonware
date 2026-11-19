@@ -104,6 +104,7 @@ function switchDemo(key) {
 demoButtons.forEach((button) =>
   button.addEventListener("click", () => switchDemo(button.dataset.demo)),
 );
+byId("featured-demo").addEventListener("click", () => switchDemo("forno"));
 byId("demo-form").addEventListener("submit", (event) => {
   event.preventDefault();
   byId("demo-result").textContent =
