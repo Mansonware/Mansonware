@@ -6,7 +6,7 @@ import { chromium } from "playwright";
 
 const require = createRequire(import.meta.url);
 const url = "http://127.0.0.1:4173";
-const browser = await chromium.launch();
+const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || undefined });
 const context = await browser.newContext({
   reducedMotion: "reduce",
   bypassCSP: true,

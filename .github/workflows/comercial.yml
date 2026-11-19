@@ -22,13 +22,13 @@ jobs:
       - name: Preparar navegador e auditoria
         run: |
           npm install --no-save --package-lock=false playwright@1.56.1 axe-core@4.10.3
-          npx playwright install chromium --with-deps
+          command -v google-chrome || npx playwright install chromium --with-deps
       - name: Testar aquisição, acessibilidade e privacidade
         run: |
           METRICS_URL=https://metrics.test node comercial-tools/build.mjs
           python3 -m http.server 4173 --bind 127.0.0.1 --directory dist-comercial &
           for n in {1..20}; do curl -sf http://127.0.0.1:4173/ -o /dev/null && break; sleep 1; done
-          node comercial-tools/check.mjs
+          CHROME_PATH="$(command -v google-chrome || true)" node comercial-tools/check.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
