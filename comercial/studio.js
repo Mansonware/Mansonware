@@ -199,3 +199,7 @@ consent.addEventListener("change", () => {
   countVisit();
 });
 countVisit();
+
+document.querySelectorAll("[data-preview]").forEach((link) => {
+  link.addEventListener("click", () => switchDemo(link.dataset.preview));
+});
