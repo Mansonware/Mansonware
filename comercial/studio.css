@@ -112,7 +112,7 @@ img {
   align-items: center;
   font-weight: 780;
   font-size: 25px;
-  letter-spacing: -0.075em;
+  letter-spacing: -0.052em;
   line-height: 1;
   white-space: nowrap;
 }
@@ -214,7 +214,7 @@ nav a:hover,
 .hero h1 {
   font-size: clamp(62px, 7.2vw, 106px);
   line-height: 0.96;
-  letter-spacing: -0.082em;
+  letter-spacing: -0.042em;
   font-weight: 570;
   margin: 26px 0 24px;
 }
@@ -408,7 +408,7 @@ nav a:hover,
 }
 h2 {
   font-size: clamp(38px, 4.8vw, 68px);
-  letter-spacing: -0.067em;
+  letter-spacing: -0.042em;
   line-height: 1.04;
   font-weight: 550;
 }
