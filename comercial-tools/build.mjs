@@ -11,8 +11,6 @@ const metrics = process.env.METRICS_URL
 if (metrics && !metrics.startsWith("https://"))
   throw new Error("METRICS_URL requer HTTPS.");
 const output = "dist-comercial";
-await mkdir(output, { recursive: true });
-await cp("comercial", output, { recursive: true });
 const url = origin.origin + "/";
 const metadata = [
   '<link rel="canonical" href="' + url + '">',
@@ -28,12 +26,23 @@ const metadata = [
   .filter(Boolean)
   .join("\n");
 const file = output + "/index.html";
-const html = (await readFile(file, "utf8"))
+const html = (await readFile("comercial/index.html", "utf8"))
   .replace("<title>", metadata + "\n<title>")
   .replace(
     'content="./media/social.jpg"',
     'content="' + url + 'media/social.jpg"',
   );
+const pending = [...html.matchAll(/CONFIRMAR:[^<]*/g)].map(([note]) =>
+  note.trim(),
+);
+if (pending.length) {
+  const message =
+    "Pendências comerciais antes da publicação:\n" + pending.join("\n");
+  if (process.env.RENDER !== undefined) throw new Error(message);
+  console.warn(message);
+}
+await mkdir(output, { recursive: true });
+await cp("comercial", output, { recursive: true });
 await writeFile(file, html);
 await writeFile(
   output + "/robots.txt",

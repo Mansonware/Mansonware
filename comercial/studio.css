@@ -1407,3 +1407,62 @@ h2 {
     }
   }
 }
+
+html:not([data-para="lanchonete"]) [data-lanche],
+html[data-para="lanchonete"] [data-geral] {
+  display: none !important;
+}
+.food-offer {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(24px, 6vw, 80px);
+}
+.food-offer header {
+  border-top: 2px solid #37322d;
+  padding-top: 20px;
+}
+.food-offer h2 {
+  max-width: 15ch;
+}
+#food-price {
+  margin: 18px 0;
+  font-weight: 640;
+  font-size: clamp(18px, 2vw, 26px);
+}
+.food-offer h3 {
+  margin: 14px 0 4px;
+}
+.food-offer h3:first-child {
+  margin-top: 0;
+}
+.food-offer ul {
+  padding-left: 20px;
+  margin: 6px 0 18px;
+}
+.work-feature,
+.work-subtitle {
+  grid-column: 1/-1;
+}
+.work-feature {
+  background: #edf2e7;
+  border-top-color: #3d5d39;
+}
+.work-feature p {
+  max-width: 70ch;
+}
+.work-subtitle {
+  margin: 15px 0 0;
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+@media (min-width: 980px) {
+  .work-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 700px) {
+  .food-offer {
+    grid-template-columns: 1fr;
+  }
+}

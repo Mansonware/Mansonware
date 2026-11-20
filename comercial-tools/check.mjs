@@ -44,6 +44,146 @@ async function audit(label) {
   });
   assert.deepEqual(violations, [], label + ": " + JSON.stringify(violations));
 }
+const foodUrl = url + "/?para=lanchonete";
+const offerPrice = "R$ 690 de implantação + R$ 99/mês";
+
+async function readWhatsAppMessage() {
+  await page.route(
+    "https://wa.me/**",
+    async (route) => {
+      await route.abort();
+    },
+    { times: 1 },
+  );
+  const request = page.waitForEvent("requestfailed", {
+    predicate: (req) => req.url().startsWith("https://wa.me/"),
+  });
+  await page.locator("#brief button").click({ noWaitAfter: true });
+  const target = new URL((await request).url());
+  assert.equal(target.pathname, "/5512996335539");
+  return target.searchParams.get("text");
+}
+
+async function checkPortfolio() {
+  assert.equal(
+    await page.locator(".work-card h3").first().innerText(),
+    "Magali Lanches",
+  );
+  assert.deepEqual(
+    await page.locator(".work-card header small").allInnerTexts(),
+    [
+      "Entregue",
+      "Em desenvolvimento",
+      "Em desenvolvimento",
+      "Prova de conceito",
+    ],
+  );
+}
+
+async function checkFoodMode(width, height) {
+  await page.goto(foodUrl);
+  await page.evaluate(() => document.fonts.ready);
+  assert(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  );
+  assert.equal(
+    await page
+      .locator('script:not([type="application/ld+json"]):not([src])')
+      .count(),
+    0,
+  );
+  assert.equal(await page.inputValue("#service"), "cardapio");
+  assert.equal(await page.locator('#service [value="catalogo"]').count(), 0);
+  assert.equal(await page.locator("#estimate").innerText(), offerPrice);
+  assert(await page.locator("#objective").isVisible());
+  assert(
+    (await page.locator("#objective").getAttribute("placeholder")) ===
+      "Ex.: os pedidos chegam bagunçados no WhatsApp",
+  );
+  assert(
+    await page
+      .locator(".launch [data-geral]")
+      .evaluateAll((nodes) =>
+        nodes.every((node) => getComputedStyle(node).display === "none"),
+      ),
+  );
+  assert.doesNotMatch(await page.locator("body").innerText(), /R\$ (297|997)/);
+  await checkPortfolio();
+  assert.match(
+    await page.locator(".work-feature").innerText(),
+    /Impressão na cozinha \(extra\)/,
+  );
+  for (const href of await page
+    .locator('a[href^="https://wa.me/"]')
+    .evaluateAll((links) => links.map((link) => link.href))) {
+    const target = new URL(href);
+    assert.equal(target.pathname, "/5512996335539");
+    assert(target.searchParams.get("text").includes(offerPrice));
+  }
+  await audit("lanchonete " + width);
+  if (width === 390) {
+    for (const selector of [".launch-intro", ".launch .lead", ".hero-note"]) {
+      const box = await page.locator(selector + "[data-lanche]").boundingBox();
+      assert(
+        box && box.y >= 0 && box.y + box.height <= height,
+        selector + " fora da primeira tela",
+      );
+    }
+    assert.match(
+      await page.locator(".launch .lead:visible").innerText(),
+      /monta o pedido no cardápio/,
+    );
+    assert.match(
+      await page.locator(".hero-note:visible").innerText(),
+      /R\$ 690.*R\$ 99\/mês/,
+    );
+    await page.screenshot({ path: "test-results/lanchonete-hero.png" });
+    for (const [label, selector] of [
+      ["oferta", ".food-offer"],
+      ["magali", ".work-feature"],
+      ["orcamento", "#brief"],
+    ]) {
+      await page
+        .locator(selector)
+        .screenshot({ path: "test-results/lanchonete-" + label + ".png" });
+    }
+  }
+  if (width === 390 || width === 320) {
+    await page.locator("#hero-quote").click();
+    assert.equal(new URL(page.url()).search, "?para=lanchonete");
+    assert.equal(new URL(page.url()).hash, "#orcamento");
+    const quick = await readWhatsAppMessage();
+    assert.equal(
+      quick,
+      [
+        "Olá, Manson! Vim pelo link para lanchonetes.",
+        "Projeto: Cardápio digital para lanchonete",
+        "Valores: " + offerPrice,
+        "Podemos conversar?",
+      ].join("\n"),
+    );
+    await page.goto(foodUrl);
+    const goal = "Cozinha & balcão\nOrganizar os pedidos.";
+    await page.fill("#objective", goal);
+    assert(
+      (await readWhatsAppMessage()).includes("O que quero resolver: " + goal),
+    );
+    await page.goto(foodUrl);
+    await page.click('[data-service="bot"]');
+    assert.equal(await page.inputValue("#service"), "bot");
+    const other = await readWhatsAppMessage();
+    assert.match(other, /Vim pelo link para lanchonetes/);
+    assert.match(other, /Bots para WhatsApp/);
+    assert.doesNotMatch(other, /R\$ 690|Quantidade/);
+  }
+  console.log(
+    "PASS oferta, portfólio, WhatsApp, âncoras e axe no modo lanchonete:",
+    width,
+  );
+}
+
 try {
   for (const [width, height] of [
     [320, 650],
@@ -69,15 +209,35 @@ try {
           links.every((link) => document.getElementById(link.hash.slice(1))),
         ),
     );
+    await checkPortfolio();
+    assert.match(
+      await page.locator(".hero-note:visible").innerText(),
+      /R\$ 297/,
+    );
+    assert.match(await page.locator(".rate-list").innerText(), /R\$ 997/);
+    assert.doesNotMatch(
+      await page.locator("body").innerText(),
+      /R\$ 690|CONFIRMAR:/,
+    );
     await audit(String(width));
     if (width === 390 || width === 1440)
       await page.screenshot({
         path: "test-results/" + width + ".png",
         fullPage: true,
       });
+    await checkFoodMode(width, height);
     console.log("PASS viewport, anchors, axe:", width, height);
   }
 
+  await page.goto(url + "/?para=xyz");
+  assert.equal(await page.inputValue("#service"), "landing");
+  assert.doesNotMatch(
+    await page.locator("body").innerText(),
+    /R\$ 690|CONFIRMAR:/,
+  );
+  const single = await readWhatsAppMessage();
+  assert.match(single, /Projeto: Landing page/);
+  assert.doesNotMatch(single, /Quantidade/);
   await page.goto(url);
   await page.keyboard.press("Tab");
   assert.equal(
@@ -100,7 +260,10 @@ try {
   assert.equal(await page.locator(".work-card").count(), 4);
   for (const card of await page.locator(".work-card").all()) {
     assert(await card.locator("p").isVisible());
-    assert.equal(await card.locator(".work-flow li").count(), 3);
+    assert.equal(
+      await card.locator(".work-flow li").count(),
+      (await card.locator("h3").innerText()) === "Magali Lanches" ? 4 : 3,
+    );
   }
   for (const selector of [".brief-details", ".faq details"]) {
     const details = page.locator(selector).first();
@@ -201,7 +364,9 @@ try {
 
   const plain = await browser.newContext({ javaScriptEnabled: false });
   const plainPage = await plain.newPage();
-  await plainPage.goto(url);
+  await plainPage.goto(foodUrl);
+  assert(await plainPage.locator(".hero-note[data-geral]").isVisible());
+  assert(await plainPage.locator(".food-offer").isHidden());
   assert(
     (
       await plainPage.locator("[data-direct]").first().getAttribute("href")
@@ -215,7 +380,8 @@ try {
   protectedPage.on("console", (m) => {
     if (m.type() === "error") errors.push(m.text());
   });
-  await protectedPage.goto(url);
+  await protectedPage.goto(foodUrl);
+  assert.equal(await protectedPage.inputValue("#service"), "cardapio");
   await protectedPage.click("#play-journey");
   assert(
     await protectedPage
