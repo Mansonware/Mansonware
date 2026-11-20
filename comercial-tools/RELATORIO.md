@@ -42,11 +42,8 @@ Na versão em revisão, abra `/?para=lanchonete` no servidor de teste. A oferta 
 
 O workflow percorre a jornada sem campos preenchidos em 320 e 390 px, intercepta o destino do WhatsApp antes do envio e verifica os valores, a origem e a codificação do objetivo. As duas versões passam pela auditoria automática nas seis larguras. O artefato `telas-comercial` inclui quatro capturas do modo lanchonete em 390 px.
 
-### Decisões de Manson antes da publicação
+### Condições aprovadas
 
-- CONFIRMAR: o que a mensalidade de R$ 99 cobre.
-- CONFIRMAR: se a mensalidade é obrigatória e se há período mínimo.
-- CONFIRMAR: se a Magali imprime o pedido após a abertura do WhatsApp ou em paralelo.
-- CONFIRMAR: se a impressão na cozinha é extra e como será orçada para novos clientes.
+A mensalidade de R$ 99 tem mínimo de três meses e inclui a manutenção do cardápio no ar, alterações de produtos e preços a pedido e suporte pelo WhatsApp. A impressão na cozinha é extra, sob consulta. No projeto entregue à Magali, a cozinha recebe a impressão na mesma hora em que o cliente envia o pedido pelo WhatsApp.
 
-O build da Render recusa HTML com marcações pendentes. O build de revisão lista as ocorrências. Após a confirmação, atualizar a oferta e o FAQ, verificar o fluxo da Magali e revisar o PR antes de publicar.
+A integração contínua exige que o build da Render conclua com sucesso antes dos testes no navegador.

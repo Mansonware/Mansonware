@@ -32,7 +32,7 @@ const html = (await readFile("comercial/index.html", "utf8"))
     'content="./media/social.jpg"',
     'content="' + url + 'media/social.jpg"',
   );
-const pending = [...html.matchAll(/CONFIRMAR:[^<]*/g)].map(([note]) =>
+const pending = [...html.matchAll(/\bCONFIRMAR\s*:[^<]*/g)].map(([note]) =>
   note.trim(),
 );
 if (pending.length) {

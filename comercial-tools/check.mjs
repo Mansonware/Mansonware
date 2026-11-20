@@ -69,7 +69,23 @@ async function readWhatsAppMessage() {
   return target.searchParams.get("text");
 }
 
-async function checkPortfolio() {
+async function checkPortfolio(foodMode) {
+  const feature = page.locator(".work-feature");
+  assert.equal(
+    await feature.locator("p").first().innerText(),
+    "O cliente monta o lanche no cardápio digital e envia o pedido pelo WhatsApp. Na mesma hora, a cozinha recebe o pedido impresso na impressora térmica.",
+  );
+  assert.deepEqual(await feature.locator("li").allInnerTexts(), [
+    "Cardápio",
+    "Carrinho",
+    "WhatsApp e cozinha",
+  ]);
+  const extra = feature.locator("ol + p[data-lanche]");
+  assert.equal(
+    (await extra.textContent()).trim(),
+    "Impressão na cozinha: recurso extra para novos clientes.",
+  );
+  assert.equal(await extra.isVisible(), foodMode);
   assert.equal(
     await page.locator(".work-card h3").first().innerText(),
     "Magali Lanches",
@@ -83,6 +99,22 @@ async function checkPortfolio() {
       "Prova de conceito",
     ],
   );
+}
+
+async function checkMonthlyFAQ(foodMode) {
+  const question = page.getByText("Preciso pagar mensalidade?", {
+    exact: true,
+  });
+  const answer = question.locator("..").locator("p:visible");
+  await question.click();
+  assert.equal(
+    await answer.innerText(),
+    foodMode
+      ? "Sim. O cardápio para lanchonetes tem implantação de R$ 690 e mensalidade de R$ 99, com mínimo de 3 meses. A mensalidade mantém o cardápio no ar, inclui alterações de produtos e preços quando você pedir e suporte pelo WhatsApp."
+      : "A Mansonware não exige mensalidade para criar o site. Domínio, hospedagem, manutenção opcional e serviços de terceiros são discriminados na proposta quando se aplicam.",
+  );
+  await question.click();
+  await page.evaluate(() => window.scrollTo(0, 0));
 }
 
 async function checkFoodMode(width, height) {
@@ -124,11 +156,12 @@ async function checkFoodMode(width, height) {
       ),
   );
   assert.doesNotMatch(await page.locator("body").innerText(), /R\$ (297|997)/);
-  await checkPortfolio();
-  assert.match(
-    await page.locator(".work-feature").innerText(),
-    /Impressão na cozinha \(extra\)/,
-  );
+  await checkPortfolio(true);
+  assert.deepEqual(await page.locator(".food-offer h3 + p").allInnerTexts(), [
+    "Cardápio no ar, alterações de produtos e preços quando você pedir e suporte pelo WhatsApp. Mínimo de 3 meses.",
+    "Impressão automática do pedido na cozinha, sob consulta.",
+  ]);
+  await checkMonthlyFAQ(true);
   for (const href of await page
     .locator('a[href^="https://wa.me/"]')
     .evaluateAll((links) => links.map((link) => link.href))) {
@@ -255,17 +288,15 @@ try {
           links.every((link) => document.getElementById(link.hash.slice(1))),
         ),
     );
-    await checkPortfolio();
+    await checkPortfolio(false);
+    await checkMonthlyFAQ(false);
     assert(await page.locator("#sob-medida").isVisible());
     assert.match(
       await page.locator(".hero-note:visible").innerText(),
       /R\$ 297/,
     );
     assert.match(await page.locator(".rate-list").innerText(), /R\$ 997/);
-    assert.doesNotMatch(
-      await page.locator("body").innerText(),
-      /R\$ 690|CONFIRMAR:/,
-    );
+    assert.doesNotMatch(await page.locator("body").innerText(), /R\$ 690/);
     await audit(String(width));
     if (width === 390 || width === 1440)
       await page.screenshot({
@@ -278,10 +309,7 @@ try {
 
   await page.goto(url + "/?para=xyz");
   assert.equal(await page.inputValue("#service"), "landing");
-  assert.doesNotMatch(
-    await page.locator("body").innerText(),
-    /R\$ 690|CONFIRMAR:/,
-  );
+  assert.doesNotMatch(await page.locator("body").innerText(), /R\$ 690/);
   const single = await readWhatsAppMessage();
   assert.match(single, /Projeto: Landing page/);
   assert.doesNotMatch(single, /Quantidade/);
@@ -306,11 +334,8 @@ try {
   assert.equal(await page.locator(".solution").count(), 4);
   assert.equal(await page.locator(".work-card").count(), 4);
   for (const card of await page.locator(".work-card").all()) {
-    assert(await card.locator("p").isVisible());
-    assert.equal(
-      await card.locator(".work-flow li").count(),
-      (await card.locator("h3").innerText()) === "Magali Lanches" ? 4 : 3,
-    );
+    assert(await card.locator("p").first().isVisible());
+    assert.equal(await card.locator(".work-flow li").count(), 3);
   }
   for (const selector of [".brief-details", ".faq details"]) {
     const details = page.locator(selector).first();
