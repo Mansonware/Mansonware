@@ -55,11 +55,16 @@ async function readWhatsAppMessage() {
     },
     { times: 1 },
   );
+  const abortedNavigation = page.waitForEvent(
+    "framenavigated",
+    (frame) => frame === page.mainFrame(),
+  );
   const request = page.waitForEvent("requestfailed", {
     predicate: (req) => req.url().startsWith("https://wa.me/"),
   });
   await page.locator("#brief button").click({ noWaitAfter: true });
-  const target = new URL((await request).url());
+  const [failedRequest] = await Promise.all([request, abortedNavigation]);
+  const target = new URL(failedRequest.url());
   assert.equal(target.pathname, "/5512996335539");
   return target.searchParams.get("text");
 }
