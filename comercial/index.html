@@ -128,7 +128,6 @@
                   src="./media/forno.webp"
                   width="820"
                   height="547"
-                  loading="lazy"
                   alt="Pizza margherita"
                 />
               </div>
@@ -168,7 +167,9 @@
           <article class="wrap food-offer" aria-labelledby="food-title">
             <header>
               <h2 id="food-title">Cardápio digital para lanchonete</h2>
-              <p id="food-price">R$ 690 de implantação + R$ 99/mês</p>
+              <p id="food-price">
+                <span>R$ 690 de implantação</span> <span>+ R$ 99/mês</span>
+              </p>
               <a class="btn primary" data-service="cardapio" href="#orcamento"
                 >Quero o cardápio <span aria-hidden="true">↗</span></a
               >
@@ -264,7 +265,7 @@
             </div>
           </div>
         </div>
-        <div id="sob-medida" class="wrap section">
+        <div id="sob-medida" class="wrap section" data-geral>
           <header class="section-head">
             <h2>Projetos sob medida</h2>
             <p>
@@ -468,7 +469,7 @@
               </option>
             </select>
             <div class="estimate">
-              <span>Estimativa inicial</span
+              <span id="estimate-label">Estimativa inicial</span
               ><output id="estimate" aria-live="polite"
                 >A partir de R$ 297</output
               >

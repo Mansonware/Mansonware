@@ -101,7 +101,16 @@ async function checkFoodMode(width, height) {
   );
   assert.equal(await page.inputValue("#service"), "cardapio");
   assert.equal(await page.locator('#service [value="catalogo"]').count(), 0);
-  assert.equal(await page.locator("#estimate").innerText(), offerPrice);
+  assert.equal(
+    (await page.locator("#estimate").innerText()).replace(/\s+/g, " "),
+    offerPrice,
+  );
+  assert.equal(await page.locator("#estimate-label").innerText(), "Valores");
+  assert(await page.locator("#sob-medida").isHidden());
+  assert.notEqual(
+    await page.locator('img[src="./media/forno.webp"]').getAttribute("loading"),
+    "lazy",
+  );
   assert(await page.locator("#objective").isVisible());
   assert(
     (await page.locator("#objective").getAttribute("placeholder")) ===
@@ -129,6 +138,11 @@ async function checkFoodMode(width, height) {
   }
   await audit("lanchonete " + width);
   if (width === 390) {
+    const projectTop = await page
+      .locator("#projetos")
+      .evaluate((el) => Math.round(el.getBoundingClientRect().top + scrollY));
+    assert(projectTop <= 1800, "Portfólio começa em " + projectTop + " px");
+    console.log("PASS início de Projetos a 390 px:", projectTop);
     for (const selector of [".launch-intro", ".launch .lead", ".hero-note"]) {
       const box = await page.locator(selector + "[data-lanche]").boundingBox();
       assert(
@@ -156,6 +170,29 @@ async function checkFoodMode(width, height) {
     }
   }
   if (width === 390 || width === 320) {
+    const priceLines = await page
+      .locator("#estimate > span")
+      .evaluateAll((nodes) =>
+        nodes.map((node) => {
+          const range = document.createRange();
+          range.selectNodeContents(node);
+          const rects = [...range.getClientRects()];
+          return {
+            text: node.textContent,
+            lines: rects.length,
+            top: rects[0].top,
+            bottom: rects[0].bottom,
+          };
+        }),
+      );
+    assert.deepEqual(
+      priceLines.map((line) => [line.text, line.lines]),
+      [
+        ["R$ 690 de implantação", 1],
+        ["+ R$ 99/mês", 1],
+      ],
+    );
+    assert(priceLines[1].top >= priceLines[0].bottom);
     await page.locator("#hero-quote").click();
     assert.equal(new URL(page.url()).search, "?para=lanchonete");
     assert.equal(new URL(page.url()).hash, "#orcamento");
@@ -176,7 +213,11 @@ async function checkFoodMode(width, height) {
       (await readWhatsAppMessage()).includes("O que quero resolver: " + goal),
     );
     await page.goto(foodUrl);
-    await page.click('[data-service="bot"]');
+    await page.selectOption("#service", "bot");
+    assert.equal(
+      await page.locator("#estimate-label").innerText(),
+      "Estimativa inicial",
+    );
     assert.equal(await page.inputValue("#service"), "bot");
     const other = await readWhatsAppMessage();
     assert.match(other, /Vim pelo link para lanchonetes/);
@@ -215,6 +256,7 @@ try {
         ),
     );
     await checkPortfolio();
+    assert(await page.locator("#sob-medida").isVisible());
     assert.match(
       await page.locator(".hero-note:visible").innerText(),
       /R\$ 297/,
@@ -408,6 +450,7 @@ try {
     "1",
   );
   console.log("PASS motion replay and static order with reduced motion");
+  await protectedPage.goto(url); // All service cards are displayed on the general page.
   for (const selector of [".solution", ".work-card", ".brief"]) {
     const element = protectedPage.locator(selector).last();
     await element.scrollIntoViewIfNeeded();

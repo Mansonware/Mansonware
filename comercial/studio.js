@@ -9,7 +9,8 @@ const price = new Intl.NumberFormat("pt-BR", {
   maximumFractionDigits: 0,
 });
 const foodMode = document.documentElement.dataset.para === "lanchonete";
-const foodPrice = byId("food-price").textContent.trim();
+const foodPriceLines = [...byId("food-price").children];
+const foodPrice = foodPriceLines.map((line) => line.textContent).join(" ");
 const originText = foodMode
   ? "Vim pelo link para lanchonetes."
   : "Vim pelo site da Mansonware.";
@@ -43,11 +44,19 @@ function updateEstimate(event) {
   const base = Number(service.selectedOptions[0].dataset.base);
   const count = foodMode ? 1 : Number(quantity.value);
   byId("qty-field").hidden = foodMode || !base;
-  if (service.value === "cardapio") byId("estimate").textContent = foodPrice;
-  else
+  const fixedPrice = service.value === "cardapio";
+  byId("estimate-label").textContent = fixedPrice
+    ? "Valores"
+    : "Estimativa inicial";
+  if (fixedPrice) {
+    byId("estimate").replaceChildren(
+      ...foodPriceLines.map((line) => line.cloneNode(true)),
+    );
+  } else {
     byId("estimate").textContent = base
       ? "A partir de " + price.format(base * count)
       : "Sob consulta";
+  }
   if (
     event?.type === "change" &&
     !motion.matches &&
@@ -91,8 +100,9 @@ byId("brief").addEventListener("submit", (event) => {
     !byId("qty-field").hidden &&
       Number(quantity.value) > 1 &&
       "Quantidade: " + quantity.value,
-    (service.value === "cardapio" ? "Valores: " : "Estimativa inicial: ") +
-      byId("estimate").textContent,
+    service.value === "cardapio"
+      ? "Valores: " + foodPrice
+      : "Estimativa inicial: " + byId("estimate").textContent,
     segment && "Segmento: " + segment,
     goal && "O que quero resolver: " + goal,
     service.value === "cardapio"

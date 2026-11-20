@@ -421,9 +421,13 @@ details[open] > summary:after {
   margin: 3px 0 9px;
   border-block: 1px solid var(--line);
 }
-.estimate span {
+.estimate > span {
   color: var(--muted);
   font-size: 13px;
+}
+.estimate output > span {
+  display: block;
+  white-space: nowrap;
 }
 .estimate output {
   font-size: clamp(18px, 2vw, 24px);
