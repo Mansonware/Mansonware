@@ -140,7 +140,7 @@ async function checkFoodMode(width, height) {
   assert.equal(await page.locator("#estimate-label").innerText(), "Valores");
   assert(await page.locator("#sob-medida").isHidden());
   assert.notEqual(
-    await page.locator('img[src="./media/forno.webp"]').getAttribute("loading"),
+    await page.locator('.journey img[src="./media/forno.webp"]').getAttribute("loading"),
     "lazy",
   );
   assert(await page.locator("#objective").isVisible());
@@ -171,10 +171,17 @@ async function checkFoodMode(width, height) {
   }
   await audit("lanchonete " + width);
   if (width === 390) {
-    const projectTop = await page
-      .locator("#projetos")
-      .evaluate((el) => Math.round(el.getBoundingClientRect().top + scrollY));
-    assert(projectTop <= 1800, "Portfólio começa em " + projectTop + " px");
+    const [demoTop, offerTop, projectTop] = await Promise.all(
+      ["#experimente", "#servicos", "#projetos"].map((selector) =>
+        page
+          .locator(selector)
+          .evaluate((el) => Math.round(el.getBoundingClientRect().top + scrollY)),
+      ),
+    );
+    // Order in this mode: playable menu, offer, then the delivered case right after the offer.
+    assert(demoTop < offerTop && offerTop < projectTop);
+    assert(projectTop - offerTop <= 800, "Oferta longe do portfólio");
+    assert(projectTop <= 2500, "Portfólio começa em " + projectTop + " px");
     console.log("PASS início de Projetos a 390 px:", projectTop);
     for (const selector of [".launch-intro", ".launch .lead", ".hero-note"]) {
       const box = await page.locator(selector + "[data-lanche]").boundingBox();
@@ -263,6 +270,160 @@ async function checkFoodMode(width, height) {
   );
 }
 
+async function tapDemo(selector) {
+  await page.locator(selector).click();
+}
+async function checkDemos(width) {
+  await page.goto(url);
+  const tabs = page.locator("#experimente [role=tab]");
+  assert.equal(await tabs.count(), 4);
+  assert.equal(await page.locator("#experimente .demo-panel:visible").count(), 1);
+  for (const note of await page.locator(".phone-note").allInnerTexts())
+    assert.equal(note, "Demonstração · marcas e preços fictícios");
+
+  // Cardápio: 2 margheritas + 1 refrigerante = R$ 122,00.
+  assert(await page.locator("#cart-send").isDisabled());
+  const add = (item) =>
+    tapDemo('#demo-cardapio [data-item="' + item + '"] [data-step="1"]');
+  await add("Pizza margherita");
+  await add("Pizza margherita");
+  await add("Refrigerante 2 L");
+  assert.equal(
+    (await page.locator("#cart-total").innerText()).replace(/\s/g, " "),
+    "R$ 122,00",
+  );
+  await tapDemo("#cart-send");
+  const order = (await page.locator("#cart-bubble").innerText()).replace(
+    /\s+/g,
+    " ",
+  );
+  assert.equal(
+    order,
+    "Olá! Quero pedir: 2 × Pizza margherita 1 × Refrigerante 2 L Total: R$ 122,00",
+  );
+
+  // Landing page.
+  await tapDemo("#tab-landing");
+  assert(await page.locator("#demo-landing").isVisible());
+  await tapDemo("#landing-cta");
+  assert.equal(
+    await page.locator("#landing-bubble").innerText(),
+    "Olá! Quero agendar corte + barba.",
+  );
+
+  // Bot: three scripted answers, then reset.
+  await tapDemo("#tab-bot");
+  for (const [reply, answer] of [
+    ["horarios", "Atendemos de terça a sábado, das 9h às 19h."],
+    ["precos", "Corte + barba: R$ 60"],
+    ["pessoa", "Certo! Vou chamar a equipe."],
+  ]) {
+    await tapDemo('#demo-bot [data-reply="' + reply + '"]');
+    assert.match(
+      await page.locator("#chat-log .msg.bot").last().innerText(),
+      new RegExp(answer.replace(/[.+$]/g, "\\$&")),
+    );
+  }
+  await tapDemo("#chat-reset");
+  assert.equal(await page.locator("#chat-log .msg").count(), 1);
+
+  // Site institucional: inner pages and contact.
+  await tapDemo("#tab-site");
+  for (const pageName of ["local", "contato", "quartos"]) {
+    await tapDemo('#demo-site [data-page="' + pageName + '"]');
+    assert(
+      await page
+        .locator('[data-page-panel="' + pageName + '"]')
+        .isVisible(),
+    );
+  }
+  await tapDemo('#demo-site [data-page="contato"]');
+  await tapDemo("#site-cta");
+  assert.match(
+    await page.locator("#site-bubble").innerText(),
+    /consultar disponibilidade/,
+  );
+  assert(
+    await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+  );
+  if (width === 390)
+    for (const id of ["cardapio", "landing", "bot", "site"]) {
+      await tapDemo("#tab-" + id);
+      await page
+        .locator("#demo-" + id + " .phone")
+        .screenshot({ path: "test-results/demo-" + id + "-390.png" });
+    }
+
+  // Each CTA selects its service and names the demo in the WhatsApp message.
+  for (const [id, demo, project, value] of [
+    ["cardapio", "Cardápio", "Catálogo digital", "A partir de R$ 997"],
+    ["landing", "Landing page", "Landing page", "A partir de R$ 297"],
+    ["bot", "Bot de WhatsApp", "Bots para WhatsApp", "Sob consulta"],
+    ["site", "Site institucional", "Site institucional", "A partir de R$ 797"],
+  ]) {
+    await page.goto(url);
+    await tapDemo("#tab-" + id);
+    await tapDemo("#demo-" + id + " a[data-demo]");
+    const text = (await readWhatsAppMessage()).replace(/\u00a0/g, " ");
+    assert.equal(
+      text,
+      [
+        "Olá, Manson! Vim pelo site da Mansonware.",
+        "Testei a demonstração: " + demo + ".",
+        "Projeto: " + project,
+        "Estimativa inicial: " + value,
+        "Podemos conversar sobre o escopo e o valor final?",
+      ].join("\n"),
+    );
+  }
+
+  // Lanchonete mode: only the menu demo, priced with the food offer.
+  await page.goto(foodUrl);
+  assert(await page.locator(".demo-tabs").isHidden());
+  assert(await page.locator("#demo-cardapio").isVisible());
+  await add("Pizza calabresa");
+  await tapDemo("#demo-cardapio a[data-demo]");
+  assert.equal(await page.inputValue("#service"), "cardapio");
+  assert.equal(
+    await readWhatsAppMessage(),
+    [
+      "Olá, Manson! Vim pelo link para lanchonetes.",
+      "Testei a demonstração: Cardápio.",
+      "Projeto: Cardápio digital para lanchonete",
+      "Valores: " + offerPrice,
+      "Podemos conversar?",
+    ].join("\n"),
+  );
+  console.log("PASS demos interativas e mensagens do WhatsApp:", width);
+}
+
+async function checkDemoKeyboard() {
+  await page.goto(url);
+  await page.locator("#tab-cardapio").focus();
+  await page.keyboard.press("ArrowRight");
+  assert.equal(await page.evaluate(() => document.activeElement.id), "tab-landing");
+  assert(await page.locator("#demo-landing").isVisible());
+  await page.keyboard.press("End");
+  assert.equal(await page.evaluate(() => document.activeElement.id), "tab-site");
+  await page.keyboard.press("ArrowRight");
+  assert.equal(await page.evaluate(() => document.activeElement.id), "tab-cardapio");
+  // Tab from the tab list reaches the menu buttons in visual order.
+  for (let step = 0; step < 4; step++) {
+    await page.keyboard.press("Tab");
+    const label = await page.evaluate(() =>
+      document.activeElement.getAttribute("aria-label"),
+    );
+    if (label === "Adicionar pizza margherita") break;
+  }
+  await page.keyboard.press("Enter");
+  assert.equal(await page.locator("#demo-cardapio output").first().innerText(), "1");
+  for (const id of ["landing", "bot", "site"]) {
+    await page.locator("#tab-" + id).click();
+    await audit("demo " + id);
+  }
+  console.log("PASS teclado e axe nas abas das demos");
+}
+
 try {
   for (const [width, height] of [
     [320, 650],
@@ -304,9 +465,12 @@ try {
         fullPage: true,
       });
     await checkFoodMode(width, height);
+    if (width === 320 || width === 390) await checkDemos(width);
     console.log("PASS viewport, anchors, axe:", width, height);
   }
 
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await checkDemoKeyboard();
   await page.goto(url + "/?para=xyz");
   assert.equal(await page.inputValue("#service"), "landing");
   assert.doesNotMatch(await page.locator("body").innerText(), /R\$ 690/);
@@ -355,7 +519,7 @@ try {
     ia: 0,
     saas: 0,
   })) {
-    await page.click('[data-service="' + key + '"]');
+    await page.click('#servicos [data-service="' + key + '"]');
     assert.equal(await page.inputValue("#service"), key);
     if (base) {
       await page.selectOption("#quantity", "2");
@@ -372,7 +536,7 @@ try {
     route.fulfill({ status: 200, body: "WhatsApp test destination" }),
   );
   await page.goto(url);
-  await page.click('[data-service="bot"]');
+  await page.click('#sob-medida [data-service="bot"]');
   assert.equal(
     await page.locator(".brief-details").evaluate((el) => el.open),
     false,

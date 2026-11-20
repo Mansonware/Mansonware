@@ -40,6 +40,7 @@
     <script src="./segmento.js"></script>
     <link rel="stylesheet" href="./studio.css" />
     <script src="./studio.js" defer></script>
+    <script src="./demos.js" defer></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -96,7 +97,9 @@
                 ><span data-geral>Pedir uma proposta</span
                 ><span data-lanche>Quero o cardápio</span>
                 <span aria-hidden="true">↗</span></a
-              ><a class="quiet" href="#projetos"
+              ><a class="quiet" href="#experimente" data-geral
+                >Experimentar as demonstrações <span aria-hidden="true">↓</span></a
+              ><a class="quiet" href="#projetos" data-lanche
                 >Conhecer os projetos <span aria-hidden="true">↓</span></a
               >
             </div>
@@ -160,6 +163,152 @@
               </button>
             </figcaption>
           </figure>
+        </div>
+      </section>
+      <section id="experimente" class="demo-section" aria-labelledby="demo-title">
+        <div class="wrap section">
+          <header class="section-head">
+            <h2 id="demo-title">
+              <span data-geral>Experimente antes de contratar</span
+              ><span data-lanche>Teste o cardápio como seu cliente</span>
+            </h2>
+            <p data-geral>
+              Toque nas demonstrações e veja como seu cliente usaria cada
+              solução.
+            </p>
+            <p data-lanche>
+              Adicione itens e veja o pedido que chegaria no seu WhatsApp.
+            </p>
+          </header>
+          <div class="demo-tabs" role="tablist" aria-label="Demonstrações">
+            <button type="button" role="tab" id="tab-cardapio" aria-controls="demo-cardapio" aria-selected="true">Cardápio</button
+            ><button type="button" role="tab" id="tab-landing" aria-controls="demo-landing" aria-selected="false" tabindex="-1" data-geral>Landing page</button
+            ><button type="button" role="tab" id="tab-bot" aria-controls="demo-bot" aria-selected="false" tabindex="-1" data-geral>Bot de WhatsApp</button
+            ><button type="button" role="tab" id="tab-site" aria-controls="demo-site" aria-selected="false" tabindex="-1" data-geral>Site institucional</button>
+          </div>
+
+          <div class="demo-panel" role="tabpanel" id="demo-cardapio" aria-labelledby="tab-cardapio" data-demo-name="Cardápio">
+            <div class="phone">
+              <p class="phone-note">Demonstração · marcas e preços fictícios</p>
+              <div class="phone-screen">
+                <div class="mini-top"><strong>Cardápio da Casa</strong><span>Entrega e retirada</span></div>
+                <img class="mini-photo" src="./media/forno.webp" width="820" height="547" alt="Pizza margherita" />
+                <ul class="menu-list">
+                  <li data-item="Pizza margherita" data-price="54"><span><strong>Pizza margherita</strong><small>R$ 54,00</small></span><span class="stepper"><button type="button" data-step="-1" aria-label="Remover pizza margherita">−</button><output aria-live="polite">0</output><button type="button" data-step="1" aria-label="Adicionar pizza margherita">+</button></span></li>
+                  <li data-item="Pizza calabresa" data-price="52"><span><strong>Pizza calabresa</strong><small>R$ 52,00</small></span><span class="stepper"><button type="button" data-step="-1" aria-label="Remover pizza calabresa">−</button><output aria-live="polite">0</output><button type="button" data-step="1" aria-label="Adicionar pizza calabresa">+</button></span></li>
+                  <li data-item="Refrigerante 2 L" data-price="14"><span><strong>Refrigerante 2 L</strong><small>R$ 14,00</small></span><span class="stepper"><button type="button" data-step="-1" aria-label="Remover refrigerante 2 L">−</button><output aria-live="polite">0</output><button type="button" data-step="1" aria-label="Adicionar refrigerante 2 L">+</button></span></li>
+                </ul>
+                <div class="cart-bar"><span><span id="cart-count">0 itens</span> · <strong id="cart-total">R$ 0,00</strong></span><button type="button" id="cart-send" class="mini-btn" disabled>Enviar pedido</button></div>
+                <div class="demo-bubble" id="cart-bubble" aria-live="polite" hidden></div>
+              </div>
+            </div>
+            <div class="demo-copy">
+              <h3>Cardápio e catálogo digital</h3>
+              <p>
+                Seu cliente escolhe os itens, vê o total e envia o pedido
+                pronto pelo WhatsApp. Funciona para restaurante, loja ou
+                qualquer negócio com produtos.
+              </p>
+              <a class="btn primary" href="#orcamento" data-service="catalogo" data-demo="Cardápio"
+                ><span data-geral>Quero um catálogo assim · <span class="nowrap">a partir de R$ 997</span></span
+                ><span data-lanche>Quero o cardápio · <span class="nowrap">R$ 690 + R$ 99/mês</span></span>
+                <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+
+          <div class="demo-panel" role="tabpanel" id="demo-landing" aria-labelledby="tab-landing" data-demo-name="Landing page" hidden>
+            <div class="phone">
+              <p class="phone-note">Demonstração · marcas e preços fictícios</p>
+              <div class="phone-screen">
+                <div class="mini-top"><strong>Barbearia Navalha</strong><span>Agende em 1 minuto</span></div>
+                <img class="mini-photo" src="./media/barbearia.webp" width="820" height="547" alt="Barbeiro aparando a barba de um cliente" loading="lazy" />
+                <div class="mini-body">
+                  <p class="mini-title">Corte e barba sem espera</p>
+                  <ul class="price-list">
+                    <li><span>Corte</span><strong>R$ 40</strong></li>
+                    <li><span>Barba</span><strong>R$ 30</strong></li>
+                    <li><span>Corte + barba</span><strong>R$ 60</strong></li>
+                  </ul>
+                  <button type="button" class="mini-btn wide" id="landing-cta">Agendar pelo WhatsApp</button>
+                </div>
+                <div class="demo-bubble" id="landing-bubble" aria-live="polite" hidden></div>
+              </div>
+            </div>
+            <div class="demo-copy">
+              <h3>Landing page</h3>
+              <p>
+                Uma página direta que apresenta sua oferta e leva o visitante
+                para o WhatsApp com a mensagem pronta.
+              </p>
+              <a class="btn primary" href="#orcamento" data-service="landing" data-demo="Landing page"
+                >Quero uma landing page assim · <span class="nowrap">a partir de R$ 297</span> <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+
+          <div class="demo-panel" role="tabpanel" id="demo-bot" aria-labelledby="tab-bot" data-demo-name="Bot de WhatsApp" hidden>
+            <div class="phone">
+              <p class="phone-note">Demonstração · marcas e preços fictícios</p>
+              <div class="phone-screen chat-screen">
+                <div class="mini-top"><strong>Barbearia Navalha</strong><span>Atendente virtual</span></div>
+                <div class="chat-log" id="chat-log" aria-live="polite">
+                  <p class="msg bot">Olá! Sou o atendente virtual da Barbearia Navalha. Como posso ajudar?</p>
+                </div>
+                <div class="chat-replies" id="chat-replies">
+                  <button type="button" data-reply="horarios">Ver horários</button>
+                  <button type="button" data-reply="precos">Preços</button>
+                  <button type="button" data-reply="pessoa">Falar com uma pessoa</button>
+                </div>
+                <button type="button" class="chat-reset" id="chat-reset">Recomeçar conversa</button>
+              </div>
+            </div>
+            <div class="demo-copy">
+              <h3>Bot para WhatsApp</h3>
+              <p>
+                O bot responde às dúvidas de rotina na hora e chama sua equipe
+                quando o cliente precisa de atenção pessoal.
+              </p>
+              <a class="btn primary" href="#orcamento" data-service="bot" data-demo="Bot de WhatsApp"
+                >Quero um bot assim · <span class="nowrap">sob consulta</span> <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+
+          <div class="demo-panel" role="tabpanel" id="demo-site" aria-labelledby="tab-site" data-demo-name="Site institucional" hidden>
+            <div class="phone">
+              <p class="phone-note">Demonstração · marcas e preços fictícios</p>
+              <div class="phone-screen">
+                <div class="mini-top"><strong>Pousada Serra Alta</strong><span>Hospedagem na serra</span></div>
+                <img class="mini-photo" src="./media/pousada.webp" width="820" height="547" alt="Chalé de madeira entre árvores" loading="lazy" />
+                <nav class="site-nav" aria-label="Páginas da pousada">
+                  <button type="button" data-page="quartos" aria-pressed="true">Quartos</button
+                  ><button type="button" data-page="local" aria-pressed="false">Localização</button
+                  ><button type="button" data-page="contato" aria-pressed="false">Contato</button>
+                </nav>
+                <div class="mini-body site-page" data-page-panel="quartos">
+                  <ul class="price-list">
+                    <li><span>Chalé casal</span><strong>R$ 380/noite</strong></li>
+                    <li><span>Suíte família</span><strong>R$ 520/noite</strong></li>
+                  </ul>
+                </div>
+                <div class="mini-body site-page" data-page-panel="local" hidden>
+                  <p>A 5 minutos do centro, com estacionamento e café da manhã incluso.</p>
+                </div>
+                <div class="mini-body site-page" data-page-panel="contato" hidden>
+                  <button type="button" class="mini-btn wide" id="site-cta">Consultar disponibilidade</button>
+                </div>
+                <div class="demo-bubble" id="site-bubble" aria-live="polite" hidden></div>
+              </div>
+            </div>
+            <div class="demo-copy">
+              <h3>Site institucional</h3>
+              <p>
+                Um endereço completo para sua empresa: serviços, fotos,
+                localização e contato, com páginas fáceis de navegar.
+              </p>
+              <a class="btn primary" href="#orcamento" data-service="site" data-demo="Site institucional"
+                >Quero um site assim · <span class="nowrap">a partir de R$ 797</span> <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <noscript><style>.demo-tabs, .demo-panel .phone button { display: none; }</style></noscript>
         </div>
       </section>
       <section id="servicos" aria-label="Serviços">

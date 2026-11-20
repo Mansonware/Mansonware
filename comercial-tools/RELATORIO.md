@@ -47,3 +47,13 @@ O workflow percorre a jornada sem campos preenchidos em 320 e 390 px, intercepta
 A mensalidade de R$ 99 tem mínimo de três meses e inclui a manutenção do cardápio no ar, alterações de produtos e preços a pedido e suporte pelo WhatsApp. A impressão na cozinha é extra, sob consulta. No projeto entregue à Magali, a cozinha recebe a impressão na mesma hora em que o cliente envia o pedido pelo WhatsApp.
 
 A integração contínua exige que o build da Render conclua com sucesso antes dos testes no navegador.
+
+## Demonstrações interativas (#experimente)
+
+Logo após o topo, a seção "Experimente antes de contratar" mostra quatro demonstrações dentro de uma moldura de celular: cardápio com carrinho, landing page de barbearia, bot de WhatsApp roteirizado (sem IA) e site institucional de pousada. Marcas e preços são fictícios e cada tela traz o selo "Demonstração · marcas e preços fictícios". Nenhuma demonstração abre o WhatsApp de verdade. O pedido aparece num balão dentro da tela.
+
+Cada demonstração termina num botão que seleciona o serviço no orçamento. Quando o visitante interage com uma demonstração ou toca no botão dela, a mensagem do WhatsApp ganha a linha "Testei a demonstração: …". Sem interação, a mensagem é idêntica à anterior.
+
+No modo lanchonete aparece só o cardápio, com o título "Teste o cardápio como seu cliente", e o botão leva à oferta de R$ 690 + R$ 99/mês. Nesse modo, a animação de pizza do topo fica oculta no celular, porque o cardápio jogável vem logo abaixo. A ordem passa a ser cardápio jogável, oferta e Magali. O teste exige a Magali até 800 px depois da oferta e até 2.500 px do topo a 390 px.
+
+O workflow percorre as quatro demonstrações em 320 e 390 px, confere o carrinho (2 margheritas + 1 refrigerante = R$ 122,00), as respostas do bot, as páginas da pousada e as quatro mensagens do WhatsApp. Também testa a navegação das abas pelo teclado e roda a auditoria axe em cada aba. O artefato inclui `demo-*-390.png`.
