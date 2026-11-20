@@ -268,7 +268,7 @@ if ("IntersectionObserver" in window && typeof journey.animate === "function") {
     if (!motion.matches) {
       observer.observe(journey);
       document
-        .querySelectorAll(".section-head, .case, .offer")
+        .querySelectorAll(".section-head, .case, .rate-heading, .scope-intro")
         .forEach((element) => observer.observe(element));
     }
   };
