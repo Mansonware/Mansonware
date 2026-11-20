@@ -35,3 +35,15 @@ Monograma e composição social criados para a Mansonware. Fonte DM Sans distrib
 - [Barbearia](https://images.unsplash.com/photo-1503951914875-452162b0f3f1)
 
 - [Relógio da demonstração de catálogo](https://images.unsplash.com/photo-1524805444758-089113d48a6d)
+
+## Prévia de prospecção para lanchonetes
+
+Na versão em revisão, abra `/?para=lanchonete` no servidor de teste. A oferta é **R$ 690 de implantação + R$ 99/mês**. O cardápio, o carrinho e o envio organizado ao WhatsApp compõem a oferta. A impressão aparece como extra na prévia. A página sem parâmetro mantém os preços gerais.
+
+O workflow percorre a jornada sem campos preenchidos em 320 e 390 px, intercepta o destino do WhatsApp antes do envio e verifica os valores, a origem e a codificação do objetivo. As duas versões passam pela auditoria automática nas seis larguras. O artefato `telas-comercial` inclui quatro capturas do modo lanchonete em 390 px.
+
+### Condições aprovadas
+
+A mensalidade de R$ 99 tem mínimo de três meses e inclui a manutenção do cardápio no ar, alterações de produtos e preços a pedido e suporte pelo WhatsApp. A impressão na cozinha é extra, sob consulta. No projeto entregue à Magali, a cozinha recebe a impressão na mesma hora em que o cliente envia o pedido pelo WhatsApp.
+
+A integração contínua exige que o build da Render conclua com sucesso antes dos testes no navegador.

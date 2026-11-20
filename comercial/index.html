@@ -37,6 +37,7 @@
       type="font/woff2"
       crossorigin
     />
+    <script src="./segmento.js"></script>
     <link rel="stylesheet" href="./studio.css" />
     <script src="./studio.js" defer></script>
     <script type="application/ld+json">
@@ -75,49 +76,77 @@
       <section class="launch">
         <div class="wrap launch-grid">
           <div class="launch-copy">
-            <p class="launch-intro">Desenvolvimento web para empresas</p>
+            <p class="launch-intro" data-geral>
+              Desenvolvimento web para empresas
+            </p>
+            <p class="launch-intro" data-lanche>
+              Cardápio digital para lanchonetes, pizzarias e restaurantes
+            </p>
             <h1>Do primeiro clique<br />ao <em>próximo pedido.</em></h1>
-            <p class="lead">
+            <p class="lead" data-lanche>
+              Seu cliente monta o pedido no cardápio e envia tudo organizado
+              pelo WhatsApp. Você fala direto com Manson, o desenvolvedor.
+            </p>
+            <p class="lead" data-geral>
               Sites, catálogos e automações que ajudam seu cliente a escolher o
               que precisa e falar com você pelo WhatsApp.
             </p>
             <div class="actions">
-              <a class="btn primary" href="#orcamento"
-                >Pedir uma proposta <span aria-hidden="true">↗</span></a
+              <a class="btn primary" id="hero-quote" href="#orcamento"
+                ><span data-geral>Pedir uma proposta</span
+                ><span data-lanche>Quero o cardápio</span>
+                <span aria-hidden="true">↗</span></a
               ><a class="quiet" href="#projetos"
                 >Conhecer os projetos <span aria-hidden="true">↓</span></a
               >
             </div>
-            <p class="hero-note">
+            <p class="hero-note" data-lanche>
+              Implantação <strong>R$ 690</strong> + <strong>R$ 99/mês</strong>
+            </p>
+            <p class="hero-note" data-geral>
               Landing pages a partir de <strong>R$ 297</strong>
             </p>
           </div>
           <figure class="journey">
             <div class="product-screen">
               <div class="shop-heading">
-                <span>Meridiano</span><small>CATÁLOGO DEMONSTRATIVO</small>
+                <span data-geral>Meridiano</span
+                ><small data-geral>CATÁLOGO DEMONSTRATIVO</small
+                ><span data-lanche>Cardápio da Casa</span
+                ><small data-lanche>CARDÁPIO DEMONSTRATIVO</small>
               </div>
               <div class="product-photo">
                 <img
+                  data-geral
                   src="./media/relogio.webp"
                   width="426"
                   height="640"
                   alt="Relógio analógico com pulseira de couro"
                   fetchpriority="high"
+                /><img
+                  data-lanche
+                  src="./media/forno.webp"
+                  width="820"
+                  height="547"
+                  alt="Pizza margherita"
                 />
               </div>
               <div class="product-row">
                 <div>
-                  <small>Coleção clássica</small
-                  ><strong>Relógio analógico</strong>
+                  <small data-lanche>Pizzas</small
+                  ><strong data-lanche>Pizza margherita</strong
+                  ><small data-geral>Coleção clássica</small
+                  ><strong data-geral>Relógio analógico</strong>
                 </div>
                 <span class="sample-add" aria-hidden="true">+</span>
               </div>
             </div>
             <div class="order-bubble">
               <small><i aria-hidden="true">✓</i> Pedido pelo WhatsApp</small
-              ><strong>Olá! Gostaria de pedir</strong
-              ><span>1 × Relógio analógico</span>
+              ><strong data-lanche>Olá! Quero pedir</strong
+              ><span data-lanche>1 × Pizza margherita</span
+              ><strong data-geral>Olá! Gostaria de pedir</strong
+              ><span data-geral>1 × Relógio analógico</span>
             </div>
             <figcaption>
               <span>Exemplo de compra pelo catálogo</span
@@ -133,8 +162,36 @@
           </figure>
         </div>
       </section>
-      <section id="servicos" aria-labelledby="services-title">
-        <div class="rate-sheet">
+      <section id="servicos" aria-label="Serviços">
+        <div data-lanche class="rate-sheet">
+          <article class="wrap food-offer" aria-labelledby="food-title">
+            <header>
+              <h2 id="food-title">Cardápio digital para lanchonete</h2>
+              <p id="food-price">
+                <span>R$ 690 de implantação</span> <span>+ R$ 99/mês</span>
+              </p>
+              <a class="btn primary" data-service="cardapio" href="#orcamento"
+                >Quero o cardápio <span aria-hidden="true">↗</span></a
+              >
+            </header>
+            <div>
+              <h3>Incluído</h3>
+              <ul>
+                <li>Cardápio digital com seus produtos e preços</li>
+                <li>Carrinho para o cliente montar o pedido</li>
+                <li>Pedido enviado organizado para o seu WhatsApp</li>
+              </ul>
+              <h3>A mensalidade cobre</h3>
+              <p>
+                Cardápio no ar, alterações de produtos e preços quando você
+                pedir e suporte pelo WhatsApp. Mínimo de 3 meses.
+              </p>
+              <h3>Extra</h3>
+              <p>Impressão automática do pedido na cozinha, sob consulta.</p>
+            </div>
+          </article>
+        </div>
+        <div data-geral class="rate-sheet">
           <div class="wrap">
             <header class="rate-heading">
               <h2 id="services-title">Sites e catálogos</h2>
@@ -211,7 +268,7 @@
             </div>
           </div>
         </div>
-        <div id="sob-medida" class="wrap section">
+        <div id="sob-medida" class="wrap section" data-geral>
           <header class="section-head">
             <h2>Projetos sob medida</h2>
             <p>
@@ -312,19 +369,24 @@
             </p>
           </header>
           <div class="work-grid">
-            <article class="work-card tile">
+            <article class="work-card tile work-feature">
               <header><span>Gastronomia</span><small>Entregue</small></header>
               <h3>Magali Lanches</h3>
               <p>
-                O cliente monta o lanche e envia o carrinho pelo WhatsApp. A
-                cozinha recebe o pedido por impressão térmica.
+                O cliente monta o lanche no cardápio digital e envia o pedido
+                pelo WhatsApp. Na mesma hora, a cozinha recebe o pedido impresso
+                na impressora térmica.
               </p>
               <ol class="work-flow" aria-label="Etapas do projeto">
                 <li>Cardápio</li>
                 <li>Carrinho</li>
-                <li>Cozinha</li>
+                <li>WhatsApp e cozinha</li>
               </ol>
+              <p data-lanche>
+                Impressão na cozinha: recurso extra para novos clientes.
+              </p>
             </article>
+            <h3 class="work-subtitle">Produtos próprios em andamento</h3>
             <article class="work-card tile">
               <header>
                 <span>Varejo autoral</span><small>Em desenvolvimento</small>
@@ -412,11 +474,20 @@
               </option>
             </select>
             <div class="estimate">
-              <span>Estimativa inicial</span
+              <span id="estimate-label">Estimativa inicial</span
               ><output id="estimate" aria-live="polite"
                 >A partir de R$ 297</output
               >
             </div>
+            <label for="objective"
+              >O que você quer resolver? <small>(opcional)</small></label
+            >
+            <textarea
+              id="objective"
+              rows="2"
+              maxlength="500"
+              placeholder="Ex.: quero receber pedidos de orçamento pelo site"
+            ></textarea>
             <details class="brief-details">
               <summary>Personalizar o pedido <small>(opcional)</small></summary>
               <div class="brief-fields">
@@ -450,14 +521,6 @@
                     />
                   </div>
                 </div>
-                <label for="objective" id="goal-label"
-                  >O que você quer divulgar? <small>(opcional)</small></label
-                ><textarea
-                  id="objective"
-                  rows="2"
-                  maxlength="500"
-                  placeholder="Conte um pouco sobre a ideia"
-                ></textarea>
               </div>
             </details>
             <button type="submit" class="btn primary">
@@ -484,7 +547,7 @@
             <h2>Perguntas frequentes</h2>
           </div>
           <div>
-            <details>
+            <details data-geral>
               <summary>O que está incluído na landing page de R$ 297?</summary>
               <p>
                 É o valor inicial para apresentar uma oferta em uma página
@@ -506,7 +569,13 @@
             </details>
             <details>
               <summary>Preciso pagar mensalidade?</summary>
-              <p>
+              <p data-lanche>
+                Sim. O cardápio para lanchonetes tem implantação de R$ 690 e
+                mensalidade de R$ 99, com mínimo de 3 meses. A mensalidade
+                mantém o cardápio no ar, inclui alterações de produtos e preços
+                quando você pedir e suporte pelo WhatsApp.
+              </p>
+              <p data-geral>
                 A Mansonware não exige mensalidade para criar o site. Domínio,
                 hospedagem, manutenção opcional e serviços de terceiros são
                 discriminados na proposta quando se aplicam.

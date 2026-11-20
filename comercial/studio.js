@@ -8,24 +8,55 @@ const price = new Intl.NumberFormat("pt-BR", {
   currency: "BRL",
   maximumFractionDigits: 0,
 });
-const questions = {
-  landing: "O que você quer divulgar?",
-  premium: "Qual oferta merece destaque?",
-  site: "Quais serviços sua empresa oferece?",
-  catalogo: "Quais produtos vão entrar no catálogo?",
-  loja: "Que produtos você pretende vender?",
-  bot: "Quais dúvidas chegam ao WhatsApp?",
-  ia: "Que tarefa você gostaria de automatizar?",
-  saas: "Que processo o sistema deve resolver?",
-  ajuda: "O que você gostaria de facilitar para o seu cliente?",
-};
-
+const foodMode = document.documentElement.dataset.para === "lanchonete";
+const foodPriceLines = [...byId("food-price").children];
+const foodPrice = foodPriceLines.map((line) => line.textContent).join(" ");
+const originText = foodMode
+  ? "Vim pelo link para lanchonetes."
+  : "Vim pelo site da Mansonware.";
+if (foodMode) {
+  const option = new Option(
+    byId("food-title").textContent.trim(),
+    "cardapio",
+    true,
+    true,
+  );
+  service.querySelector('[value="catalogo"]').remove();
+  service.prepend(option);
+  service.value = option.value;
+  byId("objective").placeholder =
+    "Ex.: os pedidos chegam bagunçados no WhatsApp";
+  byId("hero-quote").dataset.service = option.value;
+  const direct = new URL("https://wa.me/5512996335539");
+  direct.searchParams.set(
+    "text",
+    "Olá, Manson! " +
+      originText +
+      " Quero saber sobre o cardápio digital (" +
+      foodPrice +
+      ").",
+  );
+  document.querySelectorAll('a[href^="https://wa.me/"]').forEach((link) => {
+    link.href = direct.href;
+  });
+}
 function updateEstimate(event) {
   const base = Number(service.selectedOptions[0].dataset.base);
-  byId("qty-field").hidden = !base;
-  byId("estimate").textContent = base
-    ? "A partir de " + price.format(base * Number(quantity.value))
-    : "Sob consulta";
+  const count = foodMode ? 1 : Number(quantity.value);
+  byId("qty-field").hidden = foodMode || !base;
+  const fixedPrice = service.value === "cardapio";
+  byId("estimate-label").textContent = fixedPrice
+    ? "Valores"
+    : "Estimativa inicial";
+  if (fixedPrice) {
+    byId("estimate").replaceChildren(
+      ...foodPriceLines.map((line) => line.cloneNode(true)),
+    );
+  } else {
+    byId("estimate").textContent = base
+      ? "A partir de " + price.format(base * count)
+      : "Sob consulta";
+  }
   if (
     event?.type === "change" &&
     !motion.matches &&
@@ -40,10 +71,10 @@ function updateEstimate(event) {
       { duration: 220 },
     );
   }
-  byId("goal-label").firstChild.textContent = questions[service.value] + " ";
 }
 service.addEventListener("change", updateEstimate);
 quantity.addEventListener("change", updateEstimate);
+updateEstimate();
 window.addEventListener("pageshow", updateEstimate);
 
 function selectService(value) {
@@ -64,13 +95,19 @@ byId("brief").addEventListener("submit", (event) => {
   const lines = [
     "Olá, Manson! " +
       (who.value.trim() ? "Sou " + who.value.trim() + ". " : "") +
-      "Vim pelo site da Mansonware.",
+      originText,
     "Projeto: " + service.selectedOptions[0].label,
-    byId("qty-field").hidden ? "" : "Quantidade: " + quantity.value,
-    "Estimativa inicial: " + byId("estimate").textContent,
+    !byId("qty-field").hidden &&
+      Number(quantity.value) > 1 &&
+      "Quantidade: " + quantity.value,
+    service.value === "cardapio"
+      ? "Valores: " + foodPrice
+      : "Estimativa inicial: " + byId("estimate").textContent,
     segment && "Segmento: " + segment,
-    goal && "Objetivo: " + goal,
-    "Podemos conversar sobre o escopo e o valor final?",
+    goal && "O que quero resolver: " + goal,
+    service.value === "cardapio"
+      ? "Podemos conversar?"
+      : "Podemos conversar sobre o escopo e o valor final?",
   ];
   const url = new URL("https://wa.me/5512996335539");
   url.searchParams.set("text", lines.filter(Boolean).join("\n"));

@@ -23,6 +23,8 @@ jobs:
         run: |
           npm install --no-save --package-lock=false playwright@1.56.1 axe-core@4.10.3
           command -v google-chrome || npx playwright install chromium --with-deps
+      - name: Validar build da Render
+        run: RENDER=true node comercial-tools/build.mjs
       - name: Testar aquisição, acessibilidade e privacidade
         run: |
           METRICS_URL=https://metrics.test node comercial-tools/build.mjs
