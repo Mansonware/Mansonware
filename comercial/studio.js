@@ -27,6 +27,9 @@ if (foodMode) {
   byId("objective").placeholder =
     "Ex.: os pedidos chegam bagunçados no WhatsApp";
   byId("hero-quote").dataset.service = option.value;
+  document
+    .querySelectorAll('#experimente [data-service="catalogo"]')
+    .forEach((link) => (link.dataset.service = option.value));
   const direct = new URL("https://wa.me/5512996335539");
   direct.searchParams.set(
     "text",
@@ -88,6 +91,15 @@ document.querySelectorAll("[data-service]").forEach((link) => {
 
 const who = byId("who");
 
+// Last demo the visitor tried in #experimente (set by demos.js or a demo CTA).
+let testedDemo = "";
+document.addEventListener("demo:tested", (event) => {
+  testedDemo = event.detail;
+});
+document.querySelectorAll("[data-demo]").forEach((link) => {
+  link.addEventListener("click", () => (testedDemo = link.dataset.demo));
+});
+
 byId("brief").addEventListener("submit", (event) => {
   event.preventDefault();
   const segment = byId("segment").value.trim();
@@ -96,6 +108,7 @@ byId("brief").addEventListener("submit", (event) => {
     "Olá, Manson! " +
       (who.value.trim() ? "Sou " + who.value.trim() + ". " : "") +
       originText,
+    testedDemo && "Testei a demonstração: " + testedDemo + ".",
     "Projeto: " + service.selectedOptions[0].label,
     !byId("qty-field").hidden &&
       Number(quantity.value) > 1 &&
