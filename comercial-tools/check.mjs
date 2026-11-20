@@ -85,7 +85,7 @@ try {
     "Pular para o conteúdo",
   );
   await page.keyboard.press("Enter");
-  for (const name of ["Serviços", "Projetos", "Exemplos", "Dúvidas"]) {
+  for (const name of ["Serviços", "Projetos", "Dúvidas"]) {
     await page
       .getByRole("navigation")
       .getByRole("link", { name, exact: true })
@@ -95,35 +95,20 @@ try {
     await page.locator("body").innerText(),
     /estúdio|\bstudio\b/i,
   );
-  await page.click('[data-demo="pousada"]');
-  await page.click("#featured-demo");
-  assert.equal(await page.getAttribute("#demo-stage", "data-theme"), "forno");
-  for (const selector of [".case", ".faq details"]) {
-    await page
-      .locator(selector + " summary")
-      .first()
-      .focus();
+  assert.equal(await page.locator("#demos").count(), 0);
+  assert.equal(await page.locator(".solution").count(), 4);
+  assert.equal(await page.locator(".work-card").count(), 4);
+  for (const card of await page.locator(".work-card").all()) {
+    assert(await card.locator("p").isVisible());
+    assert.equal(await card.locator(".work-flow li").count(), 3);
+  }
+  for (const selector of [".brief-details", ".faq details"]) {
+    const details = page.locator(selector).first();
+    await details.locator("summary").focus();
     await page.keyboard.press("Enter");
-    assert(
-      await page
-        .locator(selector)
-        .first()
-        .evaluate((el) => el.open),
-    );
+    assert(await details.evaluate((el) => el.open));
   }
-  for (const key of ["forno", "pousada", "barbearia"]) {
-    await page.locator('[data-demo="' + key + '"]').click();
-    await page.selectOption("#demo-choice", { index: 1 });
-    await page.click("#demo-submit");
-    assert(
-      (await page.textContent("#demo-result")).includes(
-        await page.inputValue("#demo-choice"),
-      ),
-    );
-    await page.click("#demo-quote");
-    assert(await page.inputValue("#segment"));
-  }
-  console.log("PASS keyboard, navigation, cases, FAQ, three demos");
+  console.log("PASS keyboard, cards, FAQ and optional fields");
 
   for (const [key, base] of Object.entries({
     landing: 297,
@@ -148,19 +133,28 @@ try {
       assert(await page.locator("#qty-field").isHidden());
     }
   }
+  await context.route("https://wa.me/**", (route) =>
+    route.fulfill({ status: 200, body: "WhatsApp test destination" }),
+  );
+  await page.goto(url);
+  await page.click('[data-service="bot"]');
+  assert.equal(
+    await page.locator(".brief-details").evaluate((el) => el.open),
+    false,
+  );
   await page.click("#brief button");
-  assert.equal(await page.locator("#who:invalid").count(), 1);
-  await page.fill("#who", "  ");
-  await page.click("#brief button");
-  assert.equal(await page.locator("#who:invalid").count(), 1);
+  await page.waitForURL("https://wa.me/**");
+  const quick = new URL(page.url());
+  assert.equal(quick.pathname, "/5512996335539");
+  assert.match(quick.searchParams.get("text"), /Bots para WhatsApp/);
+  assert.match(quick.searchParams.get("text"), /Sob consulta/);
+  await page.goto(url);
+  await page.click(".brief-details summary");
   await page.selectOption("#service", "premium");
   await page.selectOption("#quantity", "2");
   await page.fill("#who", "João & Cia");
   await page.fill("#segment", "Padaria");
   await page.fill("#objective", "Café & pão? #2");
-  await context.route("https://wa.me/**", (route) =>
-    route.fulfill({ status: 200, body: "WhatsApp test destination" }),
-  );
   await page.click("#brief button");
   await page.waitForURL("https://wa.me/**");
   const target = new URL(page.url());
@@ -177,21 +171,17 @@ try {
     assert(message.includes(part));
   assert.deepEqual(metrics, []);
   console.log(
-    "PASS eight offers, estimates, validation, WhatsApp destination and encoded briefing",
+    "PASS eight offers, estimates, optional details, quick request, WhatsApp destination and encoded briefing",
   );
 
   await page.goto(url);
   await page.click(".privacy summary");
   await page.check("#consent");
-  await page.click("#demo-submit");
-  await page.waitForFunction(
-    () => document.querySelector("#demo-result").textContent.length > 0,
-  );
   await page.click("[data-direct]");
   await page.waitForURL("https://wa.me/**");
-  assert.deepEqual(metrics, ["/visit", "/demo", "/direct"]);
+  assert.deepEqual(metrics, ["/visit", "/direct"]);
   await page.goto(url);
-  await page.fill("#who", "Teste");
+
   await page.click("#brief button");
   await page.waitForURL("https://wa.me/**");
   assert.deepEqual(metrics.slice(-2), ["/visit", "/brief"]);
@@ -207,7 +197,7 @@ try {
   );
   await page.reload();
   assert(await page.locator("#consent").isDisabled());
-  console.log("PASS opt-in, four anonymous events, revocation and GPC");
+  console.log("PASS opt-in, three anonymous events, revocation and GPC");
 
   const plain = await browser.newContext({ javaScriptEnabled: false });
   const plainPage = await plain.newPage();
@@ -247,11 +237,42 @@ try {
     "1",
   );
   console.log("PASS motion replay and static order with reduced motion");
-  await protectedPage.click("[data-demo=pousada]");
-  assert.equal(
-    await protectedPage.textContent("#demo-brand"),
-    "Refúgio da Serra",
-  );
+  for (const selector of [".solution", ".work-card", ".brief"]) {
+    const element = protectedPage.locator(selector).last();
+    await element.scrollIntoViewIfNeeded();
+    assert.equal(
+      await element.evaluate(
+        (el) => el.getAnimations({ subtree: true }).length,
+      ),
+      0,
+    );
+  }
+  await protectedPage.emulateMedia({ reducedMotion: "no-preference" });
+  for (const selector of [".solution", ".work-card", ".brief"]) {
+    const element = protectedPage.locator(selector).first();
+    await element.scrollIntoViewIfNeeded();
+    await element.evaluate(
+      (el) =>
+        new Promise((resolve, reject) => {
+          if (el.classList.contains("entered")) return resolve();
+          const observer = new MutationObserver(() => {
+            if (el.classList.contains("entered")) {
+              observer.disconnect();
+              clearTimeout(timeout);
+              resolve();
+            }
+          });
+          const timeout = setTimeout(() => {
+            observer.disconnect();
+            reject(new Error("Missing viewport animation"));
+          }, 3500);
+          observer.observe(el, {
+            attributes: true,
+            attributeFilter: ["class"],
+          });
+        }),
+    );
+  }
   for (const path of ["robots.txt", "sitemap.xml", "media/social.jpg"])
     assert((await normal.request.get(url + "/" + path)).ok());
   assert.deepEqual(errors, []);

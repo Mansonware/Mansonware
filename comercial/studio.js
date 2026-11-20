@@ -20,12 +20,26 @@ const questions = {
   ajuda: "O que você gostaria de facilitar para o seu cliente?",
 };
 
-function updateEstimate() {
+function updateEstimate(event) {
   const base = Number(service.selectedOptions[0].dataset.base);
   byId("qty-field").hidden = !base;
   byId("estimate").textContent = base
     ? "A partir de " + price.format(base * Number(quantity.value))
     : "Sob consulta";
+  if (
+    event?.type === "change" &&
+    !motion.matches &&
+    typeof service.animate === "function"
+  ) {
+    animateElement(
+      byId("estimate"),
+      [
+        { transform: "translateY(4px)", opacity: 0.5 },
+        { transform: "none", opacity: 1 },
+      ],
+      { duration: 220 },
+    );
+  }
   byId("goal-label").firstChild.textContent = questions[service.value] + " ";
 }
 service.addEventListener("change", updateEstimate);
@@ -41,95 +55,17 @@ document.querySelectorAll("[data-service]").forEach((link) => {
   link.addEventListener("click", () => selectService(link.dataset.service));
 });
 
-const demos = {
-  forno: {
-    sector: "gastronomia",
-    brand: "Casa Forno",
-    title: "Pizza de fermentação lenta.",
-    description: "Escolha um sabor e veja o resumo do pedido.",
-    label: "Sabor da pizza",
-    options: ["Margherita", "Quatro queijos", "Calabresa"],
-    action: "Montar pedido",
-    result: "Pedido de exemplo: 1 pizza",
-    alt: "Pizza margherita com manjericão",
-    service: "catalogo",
-  },
-  pousada: {
-    sector: "hospedagem",
-    brand: "Refúgio da Serra",
-    title: "Uma pausa entre as árvores.",
-    description: "Escolha uma acomodação e prepare uma consulta.",
-    label: "Acomodação",
-    options: ["Chalé da mata", "Suíte do jardim"],
-    action: "Consultar estadia",
-    result: "Consulta de exemplo para",
-    alt: "Chalé de madeira entre árvores",
-    service: "site",
-  },
-  barbearia: {
-    sector: "barbearia",
-    brand: "Ofício Barbearia",
-    title: "O corte no seu tempo.",
-    description: "Escolha um horário para experimentar o agendamento.",
-    label: "Horário simulado",
-    options: ["10h30", "14h00", "16h30"],
-    action: "Testar agendamento",
-    result: "Agendamento simulado para",
-    alt: "Barbeiro trabalhando em um corte",
-    service: "landing",
-  },
-};
-const demoButtons = document.querySelectorAll("[data-demo]");
-let activeDemo = demos.forno;
-function switchDemo(key) {
-  activeDemo = demos[key];
-  demoButtons.forEach((button) =>
-    button.setAttribute("aria-pressed", String(button.dataset.demo === key)),
-  );
-  byId("demo-stage").dataset.theme = key;
-  byId("demo-brand").textContent = activeDemo.brand;
-  byId("demo-title").textContent = activeDemo.title;
-  byId("demo-sub").textContent = activeDemo.description;
-  byId("demo-label").textContent = activeDemo.label;
-  byId("demo-choice").replaceChildren(
-    ...activeDemo.options.map((value) => new Option(value, value)),
-  );
-  byId("demo-submit").textContent = activeDemo.action;
-  byId("demo-photo").alt = activeDemo.alt;
-  byId("demo-photo").src = "./media/" + key + ".webp";
-  byId("demo-result").textContent = "";
-  byId("demo-quote").firstChild.textContent =
-    "Quero um projeto para " + activeDemo.sector + " ";
-}
-demoButtons.forEach((button) =>
-  button.addEventListener("click", () => switchDemo(button.dataset.demo)),
-);
-byId("featured-demo").addEventListener("click", () => switchDemo("forno"));
-byId("demo-form").addEventListener("submit", (event) => {
-  event.preventDefault();
-  byId("demo-result").textContent =
-    activeDemo.result + " · " + byId("demo-choice").value + ".";
-  countAction("demo");
-});
-byId("demo-quote").addEventListener("click", () => {
-  selectService(activeDemo.service);
-  byId("segment").value = activeDemo.sector;
-});
-
 const who = byId("who");
-who.addEventListener("input", () => who.setCustomValidity(""));
+
 byId("brief").addEventListener("submit", (event) => {
   event.preventDefault();
-  if (!who.value.trim()) {
-    who.setCustomValidity("Informe seu primeiro nome.");
-    who.reportValidity();
-    return;
-  }
   const segment = byId("segment").value.trim();
   const goal = byId("objective").value.trim();
   const lines = [
-    "Olá, Manson! Sou " + who.value.trim() + ". Vim pelo site da Mansonware.",
-    "Projeto: " + service.selectedOptions[0].textContent,
+    "Olá, Manson! " +
+      (who.value.trim() ? "Sou " + who.value.trim() + ". " : "") +
+      "Vim pelo site da Mansonware.",
+    "Projeto: " + service.selectedOptions[0].label,
     byId("qty-field").hidden ? "" : "Quantidade: " + quantity.value,
     "Estimativa inicial: " + byId("estimate").textContent,
     segment && "Segmento: " + segment,
@@ -170,7 +106,7 @@ function countAction(action) {
   if (
     consent.disabled ||
     !consent.checked ||
-    !["visit", "demo", "direct", "brief"].includes(action)
+    !["visit", "direct", "brief"].includes(action)
   )
     return;
   fetch(collector + "/" + action, {
@@ -248,7 +184,8 @@ if ("IntersectionObserver" in window && typeof journey.animate === "function") {
         observer.unobserve(entry.target);
         if (motion.matches) continue;
         if (entry.target === journey) playJourney();
-        else
+        else {
+          entry.target.classList.add("entered");
           animateElement(
             entry.target,
             [
@@ -257,6 +194,7 @@ if ("IntersectionObserver" in window && typeof journey.animate === "function") {
             ],
             { duration: 420, easing: "ease-out" },
           );
+        }
       }
     },
     { threshold: 0.15 },
@@ -268,7 +206,7 @@ if ("IntersectionObserver" in window && typeof journey.animate === "function") {
     if (!motion.matches) {
       observer.observe(journey);
       document
-        .querySelectorAll(".section-head, .case, .rate-heading, .scope-intro")
+        .querySelectorAll(".section-head, .tile, .rate-heading, .brief")
         .forEach((element) => observer.observe(element));
     }
   };
