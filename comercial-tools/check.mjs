@@ -132,6 +132,7 @@ async function checkFoodMode(width, height) {
     0,
   );
   assert.equal(await page.inputValue("#service"), "cardapio");
+  assert.match(await page.locator(".launch h1:visible").innerText(), /próximo pedido/i);
   assert.equal(await page.locator('#service [value="catalogo"]').count(), 0);
   assert.equal(
     (await page.locator("#estimate").innerText()).replace(/\s+/g, " "),
@@ -436,6 +437,7 @@ try {
     await page.setViewportSize({ width, height });
     await page.goto(url);
     await page.evaluate(() => document.fonts.ready);
+    assert.match(await page.locator(".launch h1:visible").innerText(), /próxima conversa/i);
     assert(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
@@ -683,6 +685,51 @@ try {
     "PASS JavaScript fallback, CSP, SEO and social assets; Chromium",
     browser.version(),
   );
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(url);
+  assert.equal(
+    await page.locator('a[href="./demo-landing.html?nicho=estetica"]').count(),
+    2,
+    "A campanha deve oferecer a demonstração no hero e no painel de landing page",
+  );
+  await page.goto(url + "/demo-landing.html?nicho=estetica");
+  await page.evaluate(() => document.fonts.ready);
+  assert.equal(await page.inputValue("#segment"), "estetica");
+  assert.match(await page.locator("#business-headline").innerText(), /cuidados/i);
+  await audit("demo landing 390");
+  for (const [key, label] of [
+    ["estetica", "Clínica de estética"],
+    ["solar", "Energia solar"],
+    ["oficina", "Oficina mecânica"],
+    ["imobiliaria", "Imobiliária"],
+    ["arquitetura", "Arquitetura"],
+    ["odontologia", "Clínica odontológica"],
+    ["servicos", "Prestador de serviços"],
+  ]) {
+    await page.selectOption("#segment", key);
+    assert.equal(new URL(page.url()).searchParams.get("nicho"), key);
+    assert.equal(await page.locator("#segment").inputValue(), key);
+    assert((await page.locator("#business-headline").innerText()).length > 8);
+    assert((await page.locator("#solution-grid .solution-card").count()) === 3);
+    const contact = new URL(await page.locator("#manson-cta").getAttribute("href"));
+    assert.equal(contact.pathname, "/5512996335539");
+    const message = contact.searchParams.get("text");
+    assert(message.includes(label));
+    assert(message.includes("R$ 297"));
+  }
+  assert.match(await page.locator(".disclaimer").innerText(), /não representa uma empresa real/i);
+  assert.doesNotMatch(await page.locator("body").innerText(), /depoimentos|\+\s*100|\b4[,.]9\b/);
+  await page.click("#sample-cta");
+  assert(await page.locator("#sample-feedback").isVisible());
+  for (const width of [320, 390, 768, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    assert(
+      await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+      "Overflow na demonstração com largura " + width,
+    );
+  }
+  console.log("PASS demo landing: 7 segmentos, WhatsApp, disclaimer, interação e responsividade");
 } finally {
   await browser.close();
 }

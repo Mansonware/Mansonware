@@ -25,6 +25,8 @@ jobs:
           command -v google-chrome || npx playwright install chromium --with-deps
       - name: Validar build da Render
         run: RENDER=true node comercial-tools/build.mjs
+      - name: Validar demonstração premium por segmento
+        run: node comercial-tools/check-demo-landing-v2.mjs
       - name: Testar aquisição, acessibilidade e privacidade
         run: |
           METRICS_URL=https://metrics.test node comercial-tools/build.mjs
