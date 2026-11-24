@@ -4,7 +4,8 @@ const niches = {
     label: "Clínica de estética", name: "Sua clínica", kicker: "ESTÉTICA E BEM-ESTAR",
     headline: "Apresente seus cuidados com clareza.",
     description: "Uma página para explicar procedimentos, apresentar informações e facilitar o pedido de avaliação.",
-    symbol: "✳", caption: "Cuidado, informação e atendimento em um só lugar.",
+    image: "https://images.unsplash.com/photo-1560750588-73207b1ef5b8?auto=format&fit=crop&w=1200&q=85",
+    imageAlt: "Ambiente de clínica de estética", caption: "Cuidado, informação e atendimento em um só lugar.",
     cards: [["Procedimentos","Explique seus serviços de forma simples e objetiva."],["Como funciona","Apresente etapas, informações e orientações importantes."],["Agendamento","Facilite o primeiro contato com sua equipe."]],
     cta: "Solicitar avaliação", goal: "receber pedidos de avaliação"
   },
@@ -12,7 +13,8 @@ const niches = {
     label: "Energia solar", name: "Sua empresa", kicker: "ENERGIA SOLAR",
     headline: "Explique seu projeto. Facilite o orçamento.",
     description: "Uma página para apresentar soluções de energia solar e orientar o visitante sobre como solicitar uma avaliação.",
-    symbol: "☼", caption: "Informação clara para iniciar uma conversa.",
+    image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=85",
+    imageAlt: "Painéis solares instalados em área externa", caption: "Energia, tecnologia e soluções para o seu projeto.",
     cards: [["Residencial","Apresente soluções para casas e pequenos imóveis."],["Comercial","Explique opções para empresas e estabelecimentos."],["Simulação","Direcione interessados para solicitar uma avaliação."]],
     cta: "Solicitar avaliação", goal: "receber pedidos de avaliação"
   },
@@ -20,7 +22,8 @@ const niches = {
     label: "Oficina mecânica", name: "Sua oficina", kicker: "MANUTENÇÃO AUTOMOTIVA",
     headline: "Mostre seus serviços e facilite o contato.",
     description: "Uma página para apresentar os serviços da oficina, explicar o atendimento e receber pedidos de orçamento.",
-    symbol: "⌁", caption: "Serviços organizados em uma apresentação objetiva.",
+    image: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1200&q=85",
+    imageAlt: "Mecânico trabalhando em um veículo", caption: "Serviços organizados em uma apresentação objetiva.",
     cards: [["Manutenção","Apresente os serviços de manutenção oferecidos."],["Diagnóstico","Explique como funciona a avaliação do veículo."],["Orçamento","Facilite o primeiro contato com a oficina."]],
     cta: "Solicitar orçamento", goal: "receber pedidos de orçamento"
   },
@@ -28,7 +31,8 @@ const niches = {
     label: "Imobiliária", name: "Sua imobiliária", kicker: "IMÓVEIS E OPORTUNIDADES",
     headline: "Apresente imóveis e aproxime interessados.",
     description: "Uma página para destacar imóveis, explicar condições e facilitar o agendamento de uma conversa ou visita.",
-    symbol: "⌂", caption: "Uma vitrine digital para iniciar novas conversas.",
+    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=85",
+    imageAlt: "Casa contemporânea apresentada como exemplo imobiliário", caption: "Uma vitrine digital para iniciar novas conversas.",
     cards: [["Imóveis","Organize os imóveis e suas informações principais."],["Atendimento","Explique como funciona o processo de compra ou locação."],["Visitas","Facilite o agendamento de uma visita."]],
     cta: "Consultar imóveis", goal: "receber contatos de interessados"
   },
@@ -36,7 +40,8 @@ const niches = {
     label: "Arquitetura", name: "Seu escritório", kicker: "ARQUITETURA E INTERIORES",
     headline: "Seu trabalho merece uma apresentação clara.",
     description: "Uma página para apresentar o escritório, organizar projetos e facilitar pedidos de orçamento.",
-    symbol: "⌗", caption: "Projetos, processo e contato em uma só página.",
+    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85",
+    imageAlt: "Projeto de arquitetura e interiores contemporâneo", caption: "Projetos, processo e contato em uma só página.",
     cards: [["Projetos","Apresente trabalhos e imagens autorizadas."],["Processo","Explique etapas e formas de trabalho."],["Orçamento","Abra um canal direto para novos projetos."]],
     cta: "Conversar sobre um projeto", goal: "receber pedidos de orçamento"
   },
@@ -44,7 +49,8 @@ const niches = {
     label: "Clínica odontológica", name: "Sua clínica", kicker: "SAÚDE E ODONTOLOGIA",
     headline: "Informações claras para o próximo agendamento.",
     description: "Uma página para apresentar tratamentos, orientar pacientes e facilitar o contato com a equipe.",
-    symbol: "＋", caption: "Tratamentos e informações em uma apresentação acessível.",
+    image: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1200&q=85",
+    imageAlt: "Ambiente de atendimento odontológico", caption: "Tratamentos e informações em uma apresentação acessível.",
     cards: [["Tratamentos","Apresente os tratamentos e informações gerais."],["A clínica","Compartilhe estrutura, equipe e orientações reais."],["Agendamento","Facilite o contato para marcar uma consulta."]],
     cta: "Solicitar agendamento", goal: "receber pedidos de agendamento"
   },
@@ -52,7 +58,8 @@ const niches = {
     label: "Prestador de serviços", name: "Sua empresa", kicker: "SERVIÇOS PROFISSIONAIS",
     headline: "Explique o que você faz e facilite o próximo passo.",
     description: "Uma página para apresentar seus serviços, explicar como funciona o atendimento e receber novos contatos.",
-    symbol: "↗", caption: "Sua oferta em destaque, com contato sem complicação.",
+    image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85",
+    imageAlt: "Ambiente profissional de trabalho", caption: "Sua oferta em destaque, com contato sem complicação.",
     cards: [["Serviços","Organize as principais soluções que você oferece."],["Diferenciais","Explique seu processo e o que está incluído."],["Contato","Facilite pedidos de informação e orçamento."]],
     cta: "Pedir orçamento", goal: "receber pedidos de orçamento"
   }
@@ -74,12 +81,16 @@ function contactUrl(item) {
 }
 function render() {
   const item = niches[selector.value];
-  byId("business-name").innerHTML = item.name + "<span>.</span>";
+  byId("business-name").textContent = item.name;
+  const brandDot = document.createElement("span");
+  brandDot.textContent = ".";
+  byId("business-name").append(brandDot);
   byId("footer-name").textContent = item.name;
   byId("business-kicker").textContent = item.kicker;
   byId("business-headline").textContent = item.headline;
   byId("business-description").textContent = item.description;
-  byId("symbol").textContent = item.symbol;
+  byId("segment-image").src = item.image;
+  byId("segment-image").alt = item.imageAlt;
   byId("visual-caption").textContent = item.caption;
   byId("preview-cta").textContent = item.cta + " ↗";
   byId("nav-cta").textContent = "Fale conosco ↗";
@@ -97,8 +108,7 @@ function render() {
     card.append(number, heading, copy);
     return card;
   }));
-  const url = contactUrl(item);
-  byId("manson-cta").href = url;
+  byId("manson-cta").href = contactUrl(item);
   byId("sample-feedback").hidden = true;
   const current = new URL(location.href);
   current.searchParams.set("nicho", selector.value);
@@ -107,5 +117,11 @@ function render() {
 selector.addEventListener("change", render);
 byId("sample-cta").addEventListener("click", () => {
   byId("sample-feedback").hidden = false;
+});
+byId("segment-image").addEventListener("error", () => {
+  byId("segment-image").classList.add("image-unavailable");
+});
+byId("segment-image").addEventListener("load", () => {
+  byId("segment-image").classList.remove("image-unavailable");
 });
 render();
