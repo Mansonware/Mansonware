@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f6f2">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Demonstração ilustrativa de landing page da Mansonware. Escolha um segmento e veja uma estrutura de página comercial.">
+  <title>Demonstração de landing page | Mansonware</title>
+  <link rel="stylesheet" href="./demo-landing.css">
+  <script src="./demo-landing.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./index.html" aria-label="Mansonware, voltar ao site"><span class="brand-mark">m.</span><span>mansonware<span class="dot">.</span></span></a>
+    <a class="back-link" href="./index.html">Voltar ao site <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main>
+    <section class="intro wrap">
+      <p class="eyebrow"><span class="pulse"></span> DEMONSTRAÇÃO INTERATIVA</p>
+      <h1>Uma página clara.<br><span>Um próximo passo.</span></h1>
+      <p class="intro-copy">Veja como uma landing page pode apresentar os serviços da sua empresa e facilitar o contato pelo WhatsApp.</p>
+      <div class="controls">
+        <label for="segment">Visualizar exemplo para</label>
+        <select id="segment" name="segment">
+          <option value="estetica">Clínica de estética</option>
+          <option value="solar">Energia solar</option>
+          <option value="oficina">Oficina mecânica</option>
+          <option value="imobiliaria">Imobiliária</option>
+          <option value="arquitetura">Arquitetura</option>
+          <option value="odontologia">Clínica odontológica</option>
+          <option value="servicos">Prestador de serviços</option>
+        </select>
+        <span class="control-note">O conteúdo muda conforme o segmento selecionado.</span>
+      </div>
+    </section>
+
+    <section class="preview-wrap wrap" aria-labelledby="preview-label">
+      <div class="preview-meta">
+        <span id="preview-label">PRÉVIA DO SITE</span>
+        <span class="demo-label">Conteúdo ilustrativo</span>
+      </div>
+      <article class="preview">
+        <nav class="preview-nav" aria-label="Navegação de demonstração">
+          <a href="#preview-top" class="preview-brand" id="business-name">Sua empresa<span>.</span></a>
+          <div class="preview-nav-links"><a href="#solutions">Soluções</a><a href="#contact">Contato</a></div>
+          <a class="nav-action" href="#contact" id="nav-cta">Fale conosco <span aria-hidden="true">↗</span></a>
+        </nav>
+
+        <div class="preview-hero" id="preview-top">
+          <div class="preview-copy">
+            <p class="preview-kicker" id="business-kicker">ESTÉTICA E BEM-ESTAR</p>
+            <h2 id="business-headline">Apresente seus cuidados com clareza.</h2>
+            <p id="business-description">Uma página para explicar procedimentos, apresentar informações e facilitar o pedido de avaliação.</p>
+            <a class="primary-cta" href="#contact" id="preview-cta">Solicitar avaliação <span aria-hidden="true">↗</span></a>
+            <p class="microcopy">Atendimento e informações apresentados pela própria empresa.</p>
+          </div>
+          <div class="visual-card" aria-label="Resumo ilustrativo da empresa">
+            <div class="visual-top"><span class="visual-dot"></span><span>APRESENTAÇÃO DA EMPRESA</span></div>
+            <div class="visual-symbol" aria-hidden="true"><span id="symbol">✳</span></div>
+            <p class="visual-caption" id="visual-caption">Cuidado, informação e atendimento em um só lugar.</p>
+            <div class="visual-lines"><i></i><i></i><i></i></div>
+          </div>
+        </div>
+
+        <section class="preview-solutions" id="solutions">
+          <div class="section-heading">
+            <p class="preview-kicker">COMO PODEMOS AJUDAR</p>
+            <h3>Informação organizada para quem está escolhendo.</h3>
+          </div>
+          <div class="solution-grid" id="solution-grid">
+            <article class="solution-card"><span>01</span><h4>Procedimentos</h4><p>Explique seus serviços de forma simples e objetiva.</p></article>
+            <article class="solution-card"><span>02</span><h4>Como funciona</h4><p>Apresente etapas, informações e orientações importantes.</p></article>
+            <article class="solution-card"><span>03</span><h4>Agendamento</h4><p>Facilite o primeiro contato com sua equipe.</p></article>
+          </div>
+        </section>
+
+        <section class="preview-contact" id="contact">
+          <div><p class="preview-kicker">PRÓXIMO PASSO</p><h3 id="contact-headline">Vamos conversar?</h3><p id="contact-description">A pessoa interessada encontra um caminho claro para falar com a empresa.</p></div>
+          <button type="button" class="preview-contact-button" id="sample-cta">Simular contato <span aria-hidden="true">↗</span></button>
+          <p class="sample-feedback" id="sample-feedback" role="status" hidden>Em um projeto real, este botão abriria o WhatsApp da sua empresa.</p>
+        </section>
+        <footer class="preview-footer"><span id="footer-name">Sua empresa</span><span>Informações e identidade visual fornecidas pelo contratante.</span></footer>
+      </article>
+      <p class="disclaimer">Esta é uma demonstração de estrutura. Nome, textos, serviços, imagens, preços e informações serão definidos com cada cliente. Não representa uma empresa real nem apresenta avaliações ou resultados fictícios.</p>
+    </section>
+
+    <section class="offer wrap">
+      <div class="offer-copy"><p class="eyebrow">DESENVOLVIMENTO PELA MANSONWARE</p><h2>Uma página profissional para apresentar seu negócio.</h2><p>Estrutura responsiva, conteúdo organizado e chamada para ação direcionada ao canal de atendimento da sua empresa.</p></div>
+      <div class="offer-card"><span>INVESTIMENTO INICIAL</span><strong>R$ 297</strong><p>50% na contratação e 50% na entrega. Escopo e prazo definidos na proposta.</p><a href="https://wa.me/5512996335539" id="manson-cta" target="_blank" rel="noopener noreferrer">Quero uma página assim <span aria-hidden="true">↗</span></a></div>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap"><span>MANSONWARE · DESENVOLVIMENTO WEB</span><a href="./index.html">Conhecer o portfólio principal ↗</a></footer>
+</body>
+</html>
