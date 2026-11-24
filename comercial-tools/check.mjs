@@ -132,6 +132,7 @@ async function checkFoodMode(width, height) {
     0,
   );
   assert.equal(await page.inputValue("#service"), "cardapio");
+  assert.match(await page.locator(".launch h1:visible").innerText(), /próximo pedido/i);
   assert.equal(await page.locator('#service [value="catalogo"]').count(), 0);
   assert.equal(
     (await page.locator("#estimate").innerText()).replace(/\s+/g, " "),
@@ -436,6 +437,7 @@ try {
     await page.setViewportSize({ width, height });
     await page.goto(url);
     await page.evaluate(() => document.fonts.ready);
+    assert.match(await page.locator(".launch h1:visible").innerText(), /próxima conversa/i);
     assert(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
