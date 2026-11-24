@@ -717,7 +717,7 @@ try {
     assert(message.includes("R$ 297"));
   }
   assert.match(await page.locator(".disclaimer").innerText(), /não representa uma empresa real/i);
-  assert.doesNotMatch(await page.locator("body").innerText(), /depoimentos|\\+\\s*100|\\b4[,.]9\\b/);
+  assert.doesNotMatch(await page.locator("body").innerText(), /depoimentos|\+\s*100|\b4[,.]9\b/);
   await page.click("#sample-cta");
   assert(await page.locator("#sample-feedback").isVisible());
   for (const width of [320, 390, 768, 1440]) {
