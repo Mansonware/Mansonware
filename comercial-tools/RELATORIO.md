@@ -57,3 +57,11 @@ Cada demonstração termina num botão que seleciona o serviço no orçamento. Q
 No modo lanchonete aparece só o cardápio, com o título "Teste o cardápio como seu cliente", e o botão leva à oferta de R$ 690 + R$ 99/mês. Nesse modo, a animação de pizza do topo fica oculta no celular, porque o cardápio jogável vem logo abaixo. A ordem passa a ser cardápio jogável, oferta e Magali. O teste exige a Magali até 800 px depois da oferta e até 2.500 px do topo a 390 px.
 
 O workflow percorre as quatro demonstrações em 320 e 390 px, confere o carrinho (2 margheritas + 1 refrigerante = R$ 122,00), as respostas do bot, as páginas da pousada e as quatro mensagens do WhatsApp. Também testa a navegação das abas pelo teclado e roda a auditoria axe em cada aba. O artefato inclui `demo-*-390.png`.
+
+## Demonstração reutilizável de landing pages
+
+A rota `demo-landing.html` apresenta uma prévia ilustrativa e sem identificação de clientes reais. O seletor cobre estética, energia solar, oficina mecânica, imobiliária, arquitetura, odontologia e serviços locais. O parâmetro `nicho` permite compartilhar um segmento específico. O CTA comercial abre o WhatsApp da Mansonware com o segmento e o investimento inicial de R$ 297 contextualizados.
+
+A página usa conteúdo demonstrativo, não inclui depoimentos, avaliações, métricas ou resultados inventados e recebe `noindex,nofollow`. O botão interno da prévia apenas simula a ação do site do cliente; o CTA separado conduz ao contato comercial da Mansonware.
+
+O workflow testa os sete segmentos, o destino e a mensagem do WhatsApp, a ausência de prova social fictícia, a interação de demonstração e a responsividade em 320, 390, 768 e 1440 px. A auditoria axe-core também cobre a página de demonstração.
