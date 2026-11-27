@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="320" viewBox="0 0 1000 320" role="img" aria-labelledby="title desc">
+  <title id="title">Mansonware — Full Stack, AI and Automation</title>
+  <desc id="desc">Dark graphite banner with emerald and cyan accents, featuring Mansonware's professional focus.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#080e15"/><stop offset="1" stop-color="#10221f"/></linearGradient>
+    <linearGradient id="accent"><stop stop-color="#5eead4"/><stop offset="1" stop-color="#4ade80"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#34d399" stop-opacity=".17"/><stop offset="1" stop-color="#34d399" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#9ccfc3" stroke-opacity=".055"/></pattern>
+    <clipPath id="clip"><rect x="1" y="1" width="998" height="318" rx="24"/></clipPath>
+  </defs>
+  <g clip-path="url(#clip)">
+    <rect width="1000" height="320" fill="url(#bg)"/>
+    <rect width="1000" height="320" fill="url(#grid)"/>
+    <ellipse cx="840" cy="145" rx="290" ry="230" fill="url(#glow)"/>
+    <path d="M0 0H1000" stroke="url(#accent)" stroke-width="5"/>
+    <g transform="translate(802 148)" fill="none">
+      <circle r="106" stroke="#6ee7b7" stroke-opacity=".13"/>
+      <circle r="85" stroke="#6ee7b7" stroke-opacity=".25" stroke-dasharray="4 9"/>
+      <circle r="63" stroke="#6ee7b7" stroke-opacity=".22"/>
+      <path d="M-103 0H103M0-103V103" stroke="#6ee7b7" stroke-opacity=".14"/>
+      <path d="M-47 40V-40L0 10 47-40V40" stroke="url(#accent)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="85" cy="0" r="4" fill="#5eead4"/><circle cx="0" cy="-106" r="4" fill="#4ade80"/><circle cx="-74" cy="74" r="3" fill="#5eead4"/>
+    </g>
+    <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace">
+      <rect x="48" y="39" width="278" height="30" rx="15" fill="#123029" stroke="#28594a"/>
+      <circle cx="65" cy="54" r="4" fill="#4ade80"/>
+      <text x="78" y="59" font-size="13" letter-spacing="1.4" fill="#9fe8cb">DIGITAL SYSTEMS / BR</text>
+      <text x="48" y="116" font-size="15" letter-spacing="4" fill="#8da5ae">BUILD. AUTOMATE. SECURE.</text>
+      <text x="44" y="184" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="67" font-weight="800" letter-spacing="-3" fill="#f0f6fc">MANSON<tspan fill="#5eead4">WARE</tspan></text>
+      <text x="49" y="225" font-size="22" font-weight="600" fill="#dce8ed">Full Stack / AI / Automation</text>
+      <path d="M48 255H952" stroke="#b6f0de" stroke-opacity=".15"/>
+      <text x="49" y="283" font-size="15" fill="#a6b8c1">SOFTWARE &amp; DIGITAL PRODUCTS</text>
+      <text x="951" y="283" text-anchor="end" font-size="14" fill="#9fe8cb">OPEN TO PROJECTS</text>
+    </g>
+  </g>
+  <rect x="1" y="1" width="998" height="318" rx="24" fill="none" stroke="#35554f"/>
+</svg>
